@@ -1,10 +1,21 @@
-import { Container } from '@mui/material'
 import React from 'react'
 
-import Register from '../Register'
+import InitalSection from './InitialSection'
 
-const Home = () => 
+import Header from '../../components/Modules/Header'
+import Container from '../../components/Layouts/Container'
 
-<Register/>
+const Home = () =>
+  <>
+    <Header />
+
+    <br /><br /><br /><br /><br /><br />
+
+    <main>
+      <Container>
+        <InitalSection />
+      </Container>
+    </main>
+  </>
 
 export default Home

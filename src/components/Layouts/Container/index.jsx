@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Container from '@mui/material/Container'
+import { Container } from '@mui/material'
 
 const LayoutContainer = ({ children }) => <Container fixed>{ children }</Container>
 
