@@ -4,6 +4,14 @@ import { Grid, Box, Typography } from '@mui/material'
 
 import GreenSquare from '../../../../components/Elements/GreenSquare'
 
+const ParagraphText = ({ text }) =>
+  <Typography
+    component="p"
+    sx={{ color: 'blackColor', fontSize: { xs: '16px', md: '20px' }, fontFamily: 'Montserrat', fontWeight: 400, my: 1 }}
+  >
+    {text} < GreenSquare />
+  </Typography>
+
 const InitialText = () =>
   <Grid
     item
@@ -19,7 +27,7 @@ const InitialText = () =>
         >
           <Typography
             component="h1"
-            sx={{ color: 'primaryColor', fontSize: 38, fontFamily: 'Montserrat', fontWeight: 700 }}
+            sx={{ color: 'primaryColor', fontSize: { xs: '30px', md: '38px' }, fontFamily: 'Montserrat', fontWeight: 700 }}
           >
             Astrobit
           </Typography>
@@ -42,20 +50,16 @@ const InitialText = () =>
         <Grid
           item
           xs={11}
-          sx={{ display: 'inline' }}
+          sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}
         >
-          <Typography
-            component="p"
-            sx={{ color: 'blackColor', fontSize: 20, fontFamily: 'Montserrat', fontWeight: 400 }}
-          >
-            O mercado de Criptomoedas é o futuro
-            da validação, transferência e segurança
-            de ativos globais sem a necessidade de um
-            intermediário < GreenSquare />
-          </Typography>
+          <ParagraphText text="O mercado de Criptomoedas é o futuro da validação, transferência e segurança de    ativos globais sem a necessidade de um intermediário" />
+
+          <ParagraphText text="Se o bitcoin fosse uma empresa, hoje ele seria a 9º empresa mais valiosa do mundo avaliada em mais de $700 milhões" />
+
+          <ParagraphText text="Mais de 10 milhões de pessoas possuem criptoativos e já formam um grupo maior que o de investidores da B3 e do Tesouro Direto juntos" />
         </Grid>
       </Grid>
-    </Box>
-  </Grid>
+    </Box >
+  </Grid >
 
 export default InitialText

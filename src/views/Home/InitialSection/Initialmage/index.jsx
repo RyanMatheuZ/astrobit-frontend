@@ -13,7 +13,6 @@ const InitialImage = () =>
     <img
       src={process.env.PUBLIC_URL + '/images/pickaxe-bitcoin.png'}
       alt="Picareta e Bitcoin"
-      title="Picareta e Bitcoin"
       draggable="false"
       width="100%"
     />
