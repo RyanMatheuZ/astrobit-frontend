@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 
 import axios from 'axios'
 
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Button } from '@mui/material'
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded'
 
 import Header from '../../components/Modules/Header'
 import Footer from '../../components/Modules/Footer'
@@ -30,6 +31,8 @@ const Market = () => {
     getAllCoins()
   }, [])
 
+  const favoriteCoin = (name) => alert(name)
+
   return (
     <>
       <Header />
@@ -46,7 +49,7 @@ const Market = () => {
             >
               <Box
                 component="figure"
-                sx={{ mb: 1 }}
+                sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}
               >
                 <img
                   src={coin.image}
@@ -56,6 +59,13 @@ const Market = () => {
                   width="50"
                   style={{ borderRadius: '50%' }}
                 />
+
+                <Button
+                  onClick={() => favoriteCoin(coin.name)}
+                  sx={{ display: 'flex', alignItems: 'center', borderRadius: '5px', p: 1.5 }}
+                >
+                  <FavoriteRoundedIcon color="warning" fontSize="medium" />
+                </Button>
               </Box>
 
               <Box>
