@@ -12,7 +12,8 @@ const theme = createTheme({
 		secondaryColor: '#35F29A',
 		tertiaryColor: '#27F27F',
 		blackColor: '#0D0D0D',
-		whiteColor: '#F2F2F2'
+		whiteColor: '#F2F2F2',
+    grayColor: '#999999'
 	}
 })
 

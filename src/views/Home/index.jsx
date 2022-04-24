@@ -1,21 +1,23 @@
 import React from 'react'
 
 import InitalSection from './InitialSection'
+import InfoSection from './InfoSection'
+import PlatformSection from './PlarformSection'
 
-import Header from '../../components/Modules/Header'
 import Container from '../../components/Layouts/Container'
+import ContainerGlassmorphism from '../../components/Layouts/ContainerGlassmorphism'
 
 const Home = () =>
-  <>
-    <Header />
-
-    <br /><br /><br /><br /><br /><br />
-
-    <main>
-      <Container>
-        <InitalSection />
-      </Container>
-    </main>
-  </>
+  <main>
+    <Container>
+      <InitalSection />
+    </Container>
+    <ContainerGlassmorphism>
+      <InfoSection />
+    </ContainerGlassmorphism>
+    <Container>
+      <PlatformSection />
+    </Container>
+  </main>
 
 export default Home
