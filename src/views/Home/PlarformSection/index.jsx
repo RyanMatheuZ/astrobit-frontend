@@ -67,7 +67,7 @@ const PlatformSection = () =>
   <Grid
     component="section"
     container
-    sx={{ display: 'flex', justifyContent: 'space-around' }}
+    sx={{ display: 'flex', justifyContent: 'space-around', my: 4 }}
   >
     <PlatformImage />
     <PlatformText />
