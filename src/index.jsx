@@ -1,19 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { StyledEngineProvider } from '@mui/material/styles';
 
-import { ThemeProvider } from '@mui/material/styles'
 
-import theme from './theme'
-
-import Home from './views/Home'
+import Login from './views/Login/Index';
 
 import './styles/global.css'
 
 ReactDOM.render(
-	<React.StrictMode>
-		<ThemeProvider theme={theme}>
-			<Home />
-		</ThemeProvider>
-	</React.StrictMode>,
-	document.getElementById('root')
-)
+	<StyledEngineProvider injectFirst>
+		<Login/>
+
+	</StyledEngineProvider>,
+	document.querySelector("#root")
+  )
