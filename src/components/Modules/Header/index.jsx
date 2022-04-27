@@ -33,7 +33,7 @@ const Header = () => {
   return (
     <AppBar position="static" component="header" sx={{ backgroundColor: '#FFF', boxShadow: 0 }}>
       <Container>
-        <Toolbar disableGutters sx={{ my: 2 }}>
+        <Toolbar disableGutters sx={{ my: 0.5 }}>
           <Logo flexGrowValue={1} />
 
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
