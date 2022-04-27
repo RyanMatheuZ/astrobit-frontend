@@ -19,7 +19,7 @@ const social = [
 	},
 	{
 		imageIcon: <LinkedInIcon sx={{ bgcolor: 'white', color: 'primaryColor', border: 2, borderColor: 'blackColor', borderRadius: 1, width: 35, height: 35 }} />,
-		linkUrl: 'http://www..com',
+		linkUrl: 'http://www.linkedin.com',
 		title: 'LinkedIn'
 	}
 ]
