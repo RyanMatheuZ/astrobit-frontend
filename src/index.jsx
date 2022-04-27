@@ -9,6 +9,8 @@ import theme from './theme'
 
 import Home from './views/Home'
 import Market from './views/Market'
+import Register from './views/Register'
+import Login from './views/Login'
 
 import './styles/global.css'
 
@@ -18,6 +20,9 @@ ReactDOM.render(
       <Routes>
         <Route index path="/" element={<Home />} />
         <Route path="/market" element={<Market />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+
       </Routes>
     </ThemeProvider>
   </BrowserRouter>,
