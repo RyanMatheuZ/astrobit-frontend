@@ -9,7 +9,7 @@ import FooterSiteMap from './FooterSiteMap'
 import FooterSocial from './FooterSocial'
 
 const Footer = () =>
-	<Box component="footer" sx={{ py: 2, bgcolor: 'whiteColor' }}>
+	<Box component="footer" sx={{ py: 2, bgcolor: 'white', mt: 5 }}>
 		<Container>
 			<Grid container sx={{ display: 'flex', alignItems: 'center' }}>
 				<Grid
