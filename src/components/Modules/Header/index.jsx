@@ -31,7 +31,7 @@ const Header = () => {
   const handleCloseNavMenu = () => setAnchorElNav(null)
 
   return (
-    <AppBar position="static" component="header" sx={{ bgcolor: 'transparent', boxShadow: 0 }}>
+    <AppBar position="static" component="header" sx={{ backgroundColor: '#FFF', boxShadow: 0 }}>
       <Container>
         <Toolbar disableGutters sx={{ my: 2 }}>
           <Logo flexGrowValue={1} />
