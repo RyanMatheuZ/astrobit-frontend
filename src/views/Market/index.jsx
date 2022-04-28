@@ -4,10 +4,6 @@ import React, { useState, useEffect } from 'react'
 import { Box } from '@mui/material'
 
 import LayoutDefaut from '../../components/Layouts/LayoutDefault'
-
-import Header from '../../components/Modules/Header'
-import Footer from '../../components/Modules/Footer'
-
 import Container from '../../components/Layouts/Container'
 
 import ProgressComponent from './ProgressComponent'
@@ -22,8 +18,8 @@ const Market = () => {
   const params = {
     vs_currency: 'usd',
     order: 'market_cap_desc',
-    per_page: 21,
-    page: 1,
+    per_page: 15,
+    page: 0,
     sparkline: true
   }
 
@@ -41,7 +37,7 @@ const Market = () => {
           sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 3 }}
         >
           {allCoins.map((item, i) => (
-            <CardSection
+            <ProgressComponent
               key={i}
               name={item.name}
               symbol={item.symbol}
