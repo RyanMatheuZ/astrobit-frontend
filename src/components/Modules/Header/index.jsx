@@ -31,7 +31,7 @@ const Header = () => {
   const handleCloseNavMenu = () => setAnchorElNav(null)
 
   return (
-    <AppBar position="static" component="header" sx={{ backgroundColor: '#FFF', boxShadow: 0 }}>
+    <AppBar position="static" component="header" sx={{ bgcolor: 'white', boxShadow: 0 }}>
       <Container>
         <Toolbar disableGutters sx={{ my: 0.5 }}>
           <Logo flexGrowValue={1} />
@@ -79,7 +79,7 @@ const Header = () => {
             >
               {pages.map((item, i) => (
                 <Link key={i} to={item.path}>
-                  <MenuItem onClick={handleCloseNavMenu}>
+                  <MenuItem sx={{ color: 'blackColor' }} onClick={handleCloseNavMenu}>
                     {item.label}
                   </MenuItem>
                 </Link>

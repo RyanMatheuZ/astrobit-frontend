@@ -7,8 +7,8 @@ import * as yup from 'yup';
 
 const Login = () => {
   const paperStyle = { padding: 15, height: 'auto', width: 'auto', margin: "50px auto", fontFamily: 'Montserrat' }
-  const avatarStyle = { backgroundColor: '#8979F2' }
-  const btnstyle = { margin: '8px 0', backgroundColor: '#8979F2' }
+  const avatarStyle = { bgcolor: 'primaryColor' }
+  const btnstyle = { margin: '8px 0', bgcolor: 'primaryColor' }
   const boxgrid = { width: 400, fontFamily: 'Montserrat', margin: 'auto' }
   const textfild1 = { width: '95%' }
 
@@ -58,7 +58,7 @@ const Login = () => {
           </Link>
         </Typography>
         <Typography> Ainda não possui conta?
-          <Link to="/Register">
+          <Link to="/register">
             Cadastre-se?
           </Link>
         </Typography>
