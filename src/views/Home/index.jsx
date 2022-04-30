@@ -5,6 +5,7 @@ import LayoutDefaut from '../../components/Layouts/LayoutDefault'
 import InitalSection from './InitialSection'
 import InfoSection from './InfoSection'
 import PlatformSection from './PlarformSection'
+import PartnerSection from './PartnerSection'
 
 import Container from '../../components/Layouts/Container'
 import ContainerGlassmorphism from '../../components/Layouts/ContainerGlassmorphism'
@@ -19,6 +20,7 @@ const Home = () =>
     </ContainerGlassmorphism>
     <Container>
       <PlatformSection />
+      <PartnerSection />
     </Container>
   </LayoutDefaut>
 
