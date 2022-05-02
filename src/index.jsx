@@ -8,9 +8,9 @@ import { ThemeProvider } from '@mui/material/styles'
 import theme from './theme'
 
 import Home from './views/Home'
+import About from './views/About'
 import Market from './views/Market'
-import Login from './views/Login'
-import Register from './views/Register'
+
 import './styles/global.css'
 
 ReactDOM.render(
@@ -18,9 +18,8 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <Routes>
         <Route index path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/market" element={<Market />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
       </Routes>
     </ThemeProvider>
   </BrowserRouter>,

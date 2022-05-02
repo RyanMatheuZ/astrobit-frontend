@@ -41,7 +41,7 @@ const Market = () => {
       <Container>
         <Box
           component="section"
-          sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 3, my: 10 }}
+          sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 3 }}
         >
           {!dataIsInTheLoadingPhase && (
             <>

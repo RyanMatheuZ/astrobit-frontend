@@ -4,23 +4,23 @@ import LayoutDefaut from '../../components/Layouts/LayoutDefault'
 import Container from '../../components/Layouts/Container'
 import ContainerGlassmorphism from '../../components/Layouts/ContainerGlassmorphism'
 
+import Title from './Title'
+import CardSection from './CardSection'
 import InitalSection from './InitialSection'
-import InfoSection from './InfoSection'
-import PlatformSection from './PlarformSection'
-import PartnerSection from './PartnerSection'
+import SecondSection from './SecondSection'
 
-const Home = () =>
+const About = () =>
   <LayoutDefaut>
     <Container>
-      <InitalSection />
+      <Title />
     </Container>
     <ContainerGlassmorphism>
-      <InfoSection />
+      <CardSection />
     </ContainerGlassmorphism>
     <Container>
-      <PlatformSection />
-      <PartnerSection />
+      <InitalSection />
+      <SecondSection />
     </Container>
   </LayoutDefaut>
 
-export default Home
+export default About

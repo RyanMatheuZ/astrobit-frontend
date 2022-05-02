@@ -7,8 +7,7 @@ const logos = [
   { label: 'Estadão', image: 'estadao-logo', imageWidth: '125', linkUrl: 'https://www.estadao.com.br/' },
   { label: 'CNN', image: 'cnn-logo', imageWidth: '75', linkUrl: 'https://www.cnnbrasil.com.br' },
   { label: 'Meta', image: 'meta-logo', imageWidth: '125', linkUrl: 'https://about.facebook.com/br/meta/' },
-  { label: 'Space X', image: 'spacex-logo', imageWidth: '125', linkUrl: 'https://www.spacex.com/' },
-  { label: 'Red Hat', image: 'red-hat-logo', imageWidth: '175', linkUrl: 'https://www.redhat.com/en' }
+  { label: 'Space X', image: 'spacex-logo', imageWidth: '125', linkUrl: 'https://www.spacex.com/' }
 ]
 
 const PartnerTitle = () =>
