@@ -1,15 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Grid, Box, Paper, Avatar, TextField, Stack, Button, Typography } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import { useFormik } from 'formik';
-import * as yup from 'yup';
-
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Grid, Box, Paper, Avatar, TextField, Stack, Button, Typography } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add'
+import { useFormik } from 'formik'
+import * as yup from 'yup'
+import axios from 'axios'
 const Register = () => {
   const paperStyle = { padding: 15, height: 'auto', width: 'auto', margin: "50px auto", fontFamily: 'Montserrat' }
   const avatarStyle = { backgroundColor: '#8979F2' }
   const btnstyle = { margin: '8px 0', backgroundColor: '#8979F2' }
-  const boxgrid = { width: 400, fontFamily: 'Montserrat', margin: 'auto' }
+  const boxgrid = { width: 400, height:'100%', fontFamily: 'Montserrat', margin: 'auto'}
   const textfild1 = { width: '95%' }
 
   const validationSchema = yup.object({
@@ -24,7 +24,7 @@ const Register = () => {
       .string('Digite sua senha')
       .min(5, 'A senha deve ter no mínimo 5 caracteres')
       // eslint-disable-next-line no-useless-concat
-      .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, 'A senha precisa ter no mínimo 5 caracteres, ' + 'uma letra maiúscula e uma letra minúscula, ' + 'um número e um caracter especial')
+      .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,}$/, 'A senha precisa ter no mínimo 5 caracteres, ' + 'uma letra maiúscula e uma letra minúscula, ' + 'um número e um caracter especial')
       .required('Senha é obrigatória'),
     passwordConfirm: yup.string()
       .label('Confirme sua senha')
@@ -41,7 +41,22 @@ const Register = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-
+        axios({
+        method:"post",
+        headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        url:"https://localhost:44320/api/Authenticate/register",
+        data:{
+          username: values.fullName,
+          email: values.email,
+          password: values.password
+        }
+        })
+        .then(function(response){
+          console.log(response);
+        })
+        .catch(function(error){
+          console.log(error);
+        });
     }
   });
 
