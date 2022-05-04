@@ -10,6 +10,7 @@ import theme from './theme'
 import Home from './views/Home'
 import About from './views/About'
 import Market from './views/Market'
+import Contact from './views/Contact'
 
 import './styles/global.css'
 
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Route index path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/market" element={<Market />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </ThemeProvider>
   </BrowserRouter>,
