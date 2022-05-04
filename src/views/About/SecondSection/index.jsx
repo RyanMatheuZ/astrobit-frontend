@@ -15,7 +15,7 @@ const SecondText = () =>
     >
       <Typography
         component="h3"
-        sx={{ color: 'blackColor', textAlign: 'left', fontSize: { xs: '20px', md: '28px' }, fontFamily: 'Montserrat', fontWeight: 600, mb: 1 }}
+        sx={{ color: 'primaryColor', textAlign: 'left', fontSize: { xs: '20px', md: '28px' }, fontFamily: 'Montserrat', fontWeight: 600, mb: 1 }}
       >
         Paixão em construir o futuro
       </Typography>

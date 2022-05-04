@@ -10,9 +10,8 @@ import theme from './theme'
 import Home from './views/Home'
 import About from './views/About'
 import Market from './views/Market'
-import Login from './views/Login'
-import Register from './views/Register'
-import Reset from './views/Reset Password'
+import Contact from './views/Contact'
+
 import './styles/global.css'
 
 ReactDOM.render(
@@ -22,10 +21,7 @@ ReactDOM.render(
         <Route index path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/market" element={<Market />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/reset" element={<Reset />} />
-
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </ThemeProvider>
   </BrowserRouter>,
