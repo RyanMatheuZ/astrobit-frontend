@@ -1,22 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Box, Paper, Avatar, TextField, Stack, FormControlLabel, Checkbox, Button, Typography } from '@mui/material';
-import LockIcon from '@mui/icons-material/Lock';
+import { Grid, Box, Paper, TextField, FormControlLabel, Checkbox, Button, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import Logo from '../../components/Elements/Logo'
+import axios from 'axios';
 
 const Login = () => {
   const paperStyle = { padding: 15, height: 'auto', width: 'auto', margin: "50px auto", fontFamily: 'Montserrat' }
-  const avatarStyle = { bgcolor: 'primaryColor' }
   const btnstyle = { margin: '8px 0', bgcolor: 'primaryColor' }
   const boxgrid = { width: 400, fontFamily: 'Montserrat', margin: 'auto' }
   const textfild1 = { width: '95%' }
 
   const validationSchema = yup.object({
-    email: yup
-      .string('Digite seu e-mail')
-      .email('Digite um e-mail valido')
-      .required('o e-mail é obrigatório'),
+    fullName: yup
+    .string('Digite seu usuário')
+    .required('O usuário é obrigatório'),
     password: yup
       .string('Digite sua senha')
       .required('Senha é obrigatória'),
@@ -24,25 +23,33 @@ const Login = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: '',
+      fullName: '',
       password: '',
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-
+      axios.post ('https://localhost:5001/api/Authenticate/login',
+      {
+        username : values.fullName,
+        password : values.password
+        
+      }
+      ).then( response => console.log(response)).catch(function(error,textError){
+        console.log(textError)
+      })
     }
   });
 
   return (
 
-    <Box style={boxgrid}>
+    <Box style={boxgrid}sx={{bgcolor: 'white', borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '20px', borderBottomLeftRadius: '20px', boxShadow: 6, cursor: 'default'}}>
       <Paper elevation={10} style={paperStyle} align='center' >
         <Grid align='center' >
-          <Avatar style={avatarStyle}><Stack><LockIcon /></Stack></Avatar>
-          <h2 margin="dense">Entrar</h2>
+              <Logo/>
+              <Typography margin="dense" sx={{ marginBlock:2,fontWeight:700, fontSize:25, color:"#8979F2"}}>Entrar</Typography>
         </Grid>
         <form onSubmit={formik.handleSubmit}>
-          <TextField style={textfild1} id="email" name="email" label="Usuário" placeholder="Digite seu e-mail" value={formik.values.email} onChange={formik.handleChange} error={formik.touched.email && Boolean(formik.errors.email)} helperText={formik.touched.email && formik.errors.email} margin="dense" />
+          <TextField style={textfild1} id="fullName" name="fullName" label="Usuário" placeholder="Digite seu usuario" value={formik.values.fullName} onChange={formik.handleChange} error={formik.touched.fullName && Boolean(formik.errors.fullName)} helperText={formik.touched.fullName && formik.errors.fullName} margin="dense" />
           <TextField style={textfild1} id="password" name="password" label="Senha" placeholder='Digite sua senha' type="password" value={formik.values.password} onChange={formik.handleChange} error={formik.touched.password && Boolean(formik.errors.password)} helperText={formik.touched.password && formik.errors.password} margin="dense" />
           <FormControlLabel sx={{ paddingLeft: 1, float: 'left' }}
             control={
@@ -53,7 +60,7 @@ const Login = () => {
           <Button type='submit' color='primary' variant='contained' style={btnstyle} sx={{ width: '95%' }} >Entrar</Button>
         </form>
         <Typography >
-          <Link to="#" >
+          <Link to="/reset" >
             Esqueceu a senha?
           </Link>
         </Typography>

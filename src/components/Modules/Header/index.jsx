@@ -21,7 +21,9 @@ const pages = [
   { label: 'Início', path: '/' },
   { label: 'Sobre', path: '/about' },
   { label: 'Mercado', path: '/market' },
-  { label: 'Contato', path: '/contact' }
+  { label: 'Contato', path: '/contact' },
+  { label: 'Login', path: '/login' }
+
 ]
 
 const Header = () => {
