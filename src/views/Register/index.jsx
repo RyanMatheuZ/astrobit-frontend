@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Grid, Box, Paper, TextField,Button, Typography } from '@mui/material'
+import { Grid, Box, Paper, TextField,Button, Typography} from '@mui/material'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
@@ -8,7 +8,6 @@ import Logo from '../../components/Elements/Logo'
 const Register = () => {
   const paperStyle = { padding: 15, height: 'auto', width: 'auto', margin: "50px auto", fontFamily: 'Montserrat' }
   const btnstyle = { margin: '8px 0', backgroundColor: '#8979F2' }
-  const boxgrid = { width: 400, height:'100%', fontFamily: 'Montserrat', margin: 'auto'}
   const textfild1 = { width: '95%' }
 
   const validationSchema = yup.object({
@@ -40,7 +39,6 @@ const Register = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values.fullName, values.email, values.password)
       axios.post ('https://localhost:5001/api/Authenticate/register',
       {
         username : values.fullName,
@@ -48,15 +46,16 @@ const Register = () => {
         password : values.password
         
       }
-      ).then( response => console.log(response)).catch(function(error,textError){
-        console.log(textError)
+      ).then(response => {
+          console.log(response)
       })
+      .catch(textError => console.log(textError))
     }
     });
     
   return (
 
-    <Box style={boxgrid} sx={{bgcolor: 'white', borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '20px', borderBottomLeftRadius: '20px', boxShadow: 6, cursor: 'default'}}>
+    <Box sx={{bgcolor: 'white', borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '20px', borderBottomLeftRadius: '20px', boxShadow: 6, cursor: 'default', maxWidth:'400px',margin:'0 auto', fontFamily: 'Montserrat'}}>
       <Paper elevation={10} style={paperStyle} align='center' >
         <Grid align='center' >
           <Logo/>
