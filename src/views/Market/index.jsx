@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { Box, Typography, Pagination, FormControl, InputLabel, Select, MenuItem } from '@mui/material'
 
+import HelmetContainer from '../../components/HelmetContainer'
 import LayoutDefaut from '../../components/Layouts/LayoutDefault'
 import Container from '../../components/Layouts/Container'
 
@@ -75,6 +76,10 @@ const Market = () => {
 
   return (
     <LayoutDefaut>
+      <HelmetContainer
+        title="Mercado"
+        description="Explore aqui na Astrobit esse imenso e promissor mercado de criptomoedas!"
+      />
       <Container>
         <Title />
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', paddingInline: 5, marginBottom: 3 }}>
