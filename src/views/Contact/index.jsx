@@ -1,5 +1,6 @@
 import React from 'react'
 import { TextField, Button, Typography, Grid, Box } from '@mui/material'
+import HelmetContainer from '../../components/HelmetContainer'
 import LayoutDefault from '../../components/Layouts/LayoutDefault'
 import Container from '../../components/Layouts/Container'
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled'
@@ -10,9 +11,13 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import InstagramIcon from '@mui/icons-material/Instagram'
 const Contact = () =>
   <LayoutDefault>
+    <HelmetContainer
+      title="Contato"
+      description="Restou alguma dúvida? Mande uma mensagem aos nossos especialistas!"
+    />
     <Container>
       <Grid container sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row', width: '100%', justifyContent: 'space-between', borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '30px', borderBottomLeftRadius: '30px', boxShadow: 6, cursor: 'default' }}>
-        <Grid item xs={12} md={7} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center',bgcolor: 'white', padding: 3, borderBottomLeftRadius: '30px' }}>
+        <Grid item xs={12} md={7} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', bgcolor: 'white', padding: 3, borderBottomLeftRadius: '30px' }}>
           <Typography sx={{ marginTop: 1, marginBottom: 1, color: '#8979F2', fontWeight: 700, fontSize: 25 }}>Contato</Typography>
           <TextField
             sx={{ width: '70%', margin: 'auto' }}
@@ -57,11 +62,11 @@ const Contact = () =>
           </Button>
 
         </Grid>
-        <Grid item xs={12} md={5} sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'primaryColor', borderTopRightRadius: '30px', alignItems: 'center',padding: 3 }}>
+        <Grid item xs={12} md={5} sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'primaryColor', borderTopRightRadius: '30px', alignItems: 'center', padding: 3 }}>
           <Box>
-            <Typography sx={{ fontSize:25, fontWeight: 700, marginTop: 1, marginBottom: 1, color: 'white',textAlign:'center' }} >Informação para contato</Typography>
+            <Typography sx={{ fontSize: 25, fontWeight: 700, marginTop: 1, marginBottom: 1, color: 'white', textAlign: 'center' }} >Informação para contato</Typography>
           </Box>
-          <Box sx={{marginTop:3}}>
+          <Box sx={{ marginTop: 3 }}>
             <Box sx={{ display: 'flex', marginLeft: 1, color: 'white', fontWeight: 500, marginBottom: 2, fontSize: 15 }}>
               <PhoneEnabledIcon sx={{ color: '#27F27F', marginRight: '15px' }} />
               <Typography sx={{ fontSize: 15 }}>(16)99999-0111</Typography>
