@@ -3,7 +3,7 @@ import React from 'react'
 import { Box, Typography, Button } from '@mui/material'
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded'
 
-const CardSection = ({ name, symbol, currentPrice, image }) => {
+const CardSection = ({ name, symbol, currentPrice, image, fiatCurrency }) => {
   const favoriteCoin = (name) => alert(name)
 
   return (
@@ -58,10 +58,12 @@ const CardSection = ({ name, symbol, currentPrice, image }) => {
         >
           <Typography
             component="span"
-            sx={{ fontSize: '14px', fontWeight: 600 }}
+            sx={{ fontSize: '14px', fontWeight: 600, marginRight: 0.5 }}
           >
-            $
-          </Typography>{currentPrice}
+            {fiatCurrency}
+          </Typography>
+
+          {currentPrice}
         </Typography>
       </Box>
     </Box>
