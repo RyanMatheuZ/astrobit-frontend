@@ -11,7 +11,10 @@ import Home from './views/Home'
 import About from './views/About'
 import Market from './views/Market'
 import Contact from './views/Contact'
-
+import Login from './views/Login'
+import Register from './views/Register'
+import Reset from './views/Reset_Password'
+import ModalLogin from './views/Login/modal_login'
 import './styles/global.css'
 
 ReactDOM.render(
@@ -22,6 +25,10 @@ ReactDOM.render(
         <Route path="/about" element={<About />} />
         <Route path="/market" element={<Market />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/reset" element={<Reset/>}/>
+        <Route path="/modal" element={<ModalLogin/>}/>
       </Routes>
     </ThemeProvider>
   </BrowserRouter>,

@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Grid, Box, Paper, TextField,Button, Typography} from '@mui/material'
+import { Grid, Box, Paper, TextField, Button, Typography } from '@mui/material'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
 import Logo from '../../components/Elements/Logo'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
+
 const Register = () => {
   const paperStyle = { padding: 15, height: 'auto', width: 'auto', margin: "50px auto", fontFamily: 'Montserrat' }
-  const btnstyle = { margin: '8px 0', backgroundColor: '#8979F2' }
-  const textfild1 = { width: '95%' }
-
   const validationSchema = yup.object({
     fullName: yup
       .string('Digite seu nome')
@@ -29,7 +29,6 @@ const Register = () => {
       .required('Confirme sua senha')
       .oneOf([yup.ref('password')], 'Senhas não correspondem'),
   });
-
   const formik = useFormik({
     initialValues: {
       fullName: '',
@@ -39,35 +38,93 @@ const Register = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      axios.post ('https://localhost:5001/api/Authenticate/register',
-      {
-        username : values.fullName,
-        email : values.email,
-        password : values.password
-        
-      }
+      axios.post('https://localhost:5001/api/Authenticate/register',
+        {
+          username: values.fullName,
+          email: values.email,
+          password: values.password
+        }
       ).then(response => {
-          console.log(response)
-      })
-      .catch(textError => console.log(textError))
-    }
-    });
-    
-  return (
+        console.log(response.data)
+        toast.success('Usuário cadastrado com sucesso!')
+      }).catch(error => {
+        console.log(error)
+        toast.error('Usuário já existente!')
+      });
+    },
 
-    <Box sx={{bgcolor: 'white', borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '20px', borderBottomLeftRadius: '20px', boxShadow: 6, cursor: 'default', maxWidth:'400px',margin:'0 auto', fontFamily: 'Montserrat'}}>
+  })
+  return (
+    <Box sx={{ bgcolor: 'white', borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '20px', borderBottomLeftRadius: '20px', boxShadow: 6, cursor: 'default', maxWidth: '400px', margin: '0 auto', fontFamily: 'Montserrat' }}>
       <Paper elevation={10} style={paperStyle} align='center' >
         <Grid align='center' >
-          <Logo/>
-          <Typography margin="dense" sx={{ marginBlock:2,fontWeight:700, fontSize:25, color:"#8979F2"}}>Cadastre-se</Typography>
+          <Logo />
+          <Typography
+            sx={{ marginBlock: 2, fontWeight: 700, fontSize: 25, color: "#8979F2" }}
+            margin="dense"
+          >
+            Cadastre-se
+          </Typography>
         </Grid>
         <form onSubmit={formik.handleSubmit}>
-          <TextField style={textfild1} id="fullName" name="fullName" label="Nome" placeholder="Digite seu nome" value={formik.values.fullName} onChange={formik.handleChange} error={formik.touched.fullName && Boolean(formik.errors.fullName)} helperText={formik.touched.fullName && formik.errors.fullName} margin="dense" />
-          <TextField style={textfild1} id="email" name="email" label="E-mail" placeholder="Digite seu e-mail" value={formik.values.email} onChange={formik.handleChange} error={formik.touched.email && Boolean(formik.errors.email)} helperText={formik.touched.email && formik.errors.email} margin="dense" />
-          <TextField style={textfild1} id="password" name="password" label="Senha" placeholder='Digite sua senha' type="password" value={formik.values.password} onChange={formik.handleChange} error={formik.touched.password && Boolean(formik.errors.password)} helperText={formik.touched.password && formik.errors.password} margin="dense" />
-          <TextField style={textfild1} id="passwordConfirm" name="passwordConfirm" label="Confirme a senha" placeholder='Confirme sua senha' type="password" value={formik.values.passwordConfirm} onChange={formik.handleChange} error={formik.touched.passwordConfirm && Boolean(formik.errors.passwordConfirm)} helperText={formik.touched.passwordConfirm && formik.errors.passwordConfirm} margin="dense" />
-
-          <Button type='submit' color='primary' variant='contained' style={btnstyle} sx={{ width: '95%' }} >Cadastre-se</Button>
+          <TextField
+            sx={{ width: '95%' }}
+            id="fullName"
+            name="fullName"
+            label="Nome"
+            placeholder="Digite seu nome"
+            value={formik.values.fullName}
+            onChange={formik.handleChange}
+            error={formik.touched.fullName && Boolean(formik.errors.fullName)}
+            helperText={formik.touched.fullName && formik.errors.fullName}
+            margin="dense"
+          />
+          <TextField
+            sx={{ width: '95%' }}
+            id="email"
+            name="email"
+            label="E-mail"
+            placeholder="Digite seu e-mail"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
+            margin="dense"
+          />
+          <TextField
+            sx={{ width: '95%' }}
+            id="password"
+            name="password"
+            label="Senha"
+            placeholder='Digite sua senha'
+            type="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
+            margin="dense"
+          />
+          <TextField
+            sx={{ width: '95%' }}
+            id="passwordConfirm"
+            name="passwordConfirm"
+            label="Confirme a senha"
+            placeholder='Confirme sua senha'
+            type="password"
+            value={formik.values.passwordConfirm}
+            onChange={formik.handleChange}
+            error={formik.touched.passwordConfirm && Boolean(formik.errors.passwordConfirm)}
+            helperText={formik.touched.passwordConfirm && formik.errors.passwordConfirm}
+            margin="dense"
+          />
+          <Button
+            type='submit'
+            color='primary'
+            variant='contained'
+            sx={{ width: '95%', margin: '8px 0', backgroundColor: '#8979F2' }}
+          >
+            Cadastre-se
+          </Button>
         </form>
         <Typography> Já possui conta?
           <Link to="/login">
@@ -75,8 +132,9 @@ const Register = () => {
           </Link>
         </Typography>
       </Paper>
-
+      <ToastContainer />
     </Box>
+
   )
 }
 export default Register
