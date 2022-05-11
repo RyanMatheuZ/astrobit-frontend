@@ -1,6 +1,5 @@
 import React from 'react'
 import { TextField, Button, Typography, Grid, Box } from '@mui/material'
-import HelmetContainer from '../../components/HelmetContainer'
 import LayoutDefault from '../../components/Layouts/LayoutDefault'
 import Container from '../../components/Layouts/Container'
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled'
@@ -105,7 +104,6 @@ const Contact = () => {
                 placeholder="Duvida"
                 multiline
                 rows={4}
-                defaultValue="DUVIDA"
                 margin="dense"
                 value={formik.values.duvida}
                 onChange={formik.handleChange}
@@ -149,7 +147,7 @@ const Contact = () => {
               </Box>
               <Box sx={{ display: 'flex', marginLeft: 1, color: 'white', fontWeight: 500, marginBottom: 5, fontSize: 15 }}>
                 <LanguageIcon sx={{ color: '#27F27F', marginRight: '15px' }} />
-                <Typography>astrobit.com</Typography>
+                <Typography>astrobit.vercel.app</Typography>
               </Box>
             </Box>
             <Box sx={{ display: 'flex', marginBottom: 5 }}>
@@ -167,13 +165,13 @@ const Contact = () => {
                 </Box>
               ))}
             </Box>
-            <Box sx={{ marginTop: 3, marginLeft:30}}>
-              <WhiteLogo />
+            <Box sx={{ marginTop: 3, display: 'flex', marginLeft: 20 }}>
+              <WhiteLogo sx={{ maxWidth: '150' }} />
             </Box>
           </Grid>
         </Grid>
-      </Container >
-    </LayoutDefault >
+      </Container>
+    </LayoutDefault>
   )
 }
 export default Contact

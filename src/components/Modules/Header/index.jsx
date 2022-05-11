@@ -13,7 +13,7 @@ import {
 } from '@mui/material'
 
 import MenuIcon from '@mui/icons-material/Menu'
-
+import DropdownMenu from './DropdownMenu'
 import Logo from '../../Elements/Logo'
 import Container from '../../Layouts/Container'
 
@@ -21,12 +21,11 @@ const pages = [
   { label: 'Início', path: '/' },
   { label: 'Sobre', path: '/about' },
   { label: 'Mercado', path: '/market' },
-  { label: 'Contato', path: '/contact' }
+  { label: 'Contato', path: '/contact' },
 ]
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = useState(null)
-
   const handleOpenNavMenu = event => setAnchorElNav(event.currentTarget)
   const handleCloseNavMenu = () => setAnchorElNav(null)
 
@@ -47,6 +46,7 @@ const Header = () => {
                 </Button>
               </Link>
             ))}
+            <DropdownMenu />
           </Box>
 
           <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
@@ -84,6 +84,7 @@ const Header = () => {
                   </MenuItem>
                 </Link>
               ))}
+              <DropdownMenu />
             </Menu>
           </Box>
         </Toolbar>
