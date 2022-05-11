@@ -11,6 +11,7 @@ import Home from './views/Home'
 import About from './views/About'
 import Market from './views/Market'
 import Contact from './views/Contact'
+import Admin from './views/Admin'
 
 import './styles/global.css'
 
@@ -22,6 +23,7 @@ ReactDOM.render(
         <Route path="/about" element={<About />} />
         <Route path="/market" element={<Market />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </ThemeProvider>
   </BrowserRouter>,

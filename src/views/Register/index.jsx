@@ -44,7 +44,7 @@ const Register = () => {
         username : values.fullName,
         email : values.email,
         password : values.password
-        
+
       }
       ).then(response => {
           console.log(response)
@@ -52,7 +52,7 @@ const Register = () => {
       .catch(textError => console.log(textError))
     }
     });
-    
+
   return (
 
     <Box sx={{bgcolor: 'white', borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '20px', borderBottomLeftRadius: '20px', boxShadow: 6, cursor: 'default', maxWidth:'400px',margin:'0 auto', fontFamily: 'Montserrat'}}>
