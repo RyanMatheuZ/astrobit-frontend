@@ -19,6 +19,7 @@
 		"react-placeholder": "^4.1.0",
 		"react-router-dom": "6",
 		"react-scripts": "5.0.0",
+		"react-toastify": "^9.0.1",
 		"web-vitals": "^2.1.0",
 		"yarn": "^1.22.18",
 		"yup": "^0.32.11"

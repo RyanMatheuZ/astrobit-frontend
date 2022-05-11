@@ -12,6 +12,8 @@ import About from './views/About'
 import Market from './views/Market'
 import Contact from './views/Contact'
 import Admin from './views/Admin'
+import Login from './views/Login'
+import Register from './views/Register'
 
 import './styles/global.css'
 
@@ -24,6 +26,8 @@ ReactDOM.render(
         <Route path="/market" element={<Market />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </ThemeProvider>
   </BrowserRouter>,
