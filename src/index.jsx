@@ -11,9 +11,10 @@ import Home from './views/Home'
 import About from './views/About'
 import Market from './views/Market'
 import Contact from './views/Contact'
+import Admin from './views/Admin'
 import Login from './views/Login'
 import Register from './views/Register'
-import Reset from './views/Reset_Password'
+
 import './styles/global.css'
 
 ReactDOM.render(
@@ -24,9 +25,9 @@ ReactDOM.render(
         <Route path="/about" element={<About />} />
         <Route path="/market" element={<Market />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/reset" element={<Reset/>}/>
       </Routes>
     </ThemeProvider>
   </BrowserRouter>,
