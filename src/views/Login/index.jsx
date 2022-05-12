@@ -1,44 +1,55 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Box, Paper, TextField, FormControlLabel, Checkbox, Button, Typography } from '@mui/material'
-import { useFormik } from 'formik'
+
 import * as yup from 'yup'
-import Logo from '../../components/Elements/Logo'
+import { useFormik } from 'formik'
+
 import axios from 'axios'
+
 import { ToastContainer, toast } from 'react-toastify'
+
+import { Box, Paper, TextField, Button, Typography } from '@mui/material'
+
+import Logo from '../../components/Elements/Logo'
+
+import textFields from './TextFields'
+
 import 'react-toastify/dist/ReactToastify.min.css'
 
 const Login = () => {
-  const paperStyle = { padding: 15, height: 'auto', width: 'auto', margin: "50px auto", fontFamily: 'Montserrat'}
   const validationSchema = yup.object({
-    fullName: yup
+    login: yup
       .string('Digite seu usuário')
       .required('O usuário é obrigatório'),
     password: yup
       .string('Digite sua senha')
       .required('Senha é obrigatória'),
-  });
+  })
+
   const formik = useFormik({
     initialValues: {
-      fullName: '',
-      password: '',
+      login: '',
+      password: ''
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      axios.post('https://localhost:5001/api/Authenticate/login',
-        {
-          username: values.fullName,
-          password: values.password
-        }
-      ).then(response => {
-        console.log(response.data)
-        toast.success('Usuário logado com sucesso!')
-      }).catch(error => {
-        console.log(error)
-        toast.error('Usuário ou senha inválida')
+    onSubmit: (values, { resetForm }) => {
+      axios.post('https://localhost:5001/api/Authenticate/login', {
+        login: values.name,
+        password: values.password
       })
-    },
+        .then(response => {
+          console.log(response)
+          toast.success('Usuário logado com sucesso!')
+          resetForm()
+        })
+        .catch(error => {
+          console.log(`Error: ${error}`)
+          toast.error('Usuário ou senha inválida')
+          resetForm()
+        })
+    }
   })
+
   return (
     <Box sx={{
       bgcolor: 'white', borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '20px',
@@ -47,73 +58,59 @@ const Login = () => {
     }}
     >
       <Paper
-        style={paperStyle}
         elevation={10}
         align='center'
+        style={{ padding: 15, height: 'auto', width: 'auto', margin: '50px auto', fontFamily: 'Montserrat' }}
       >
         <Box>
           <Logo />
           <Typography
             margin="dense"
-            sx={{ marginBlock: 2, fontWeight: 700, fontSize: 25, color: "#8979F2" }}
+            sx={{ color: 'primaryColor', marginBlock: 2, fontWeight: 700, fontSize: 25 }}
           >
             Entrar
           </Typography>
         </Box>
         <form onSubmit={formik.handleSubmit}>
-          <TextField
-            sx={{ width: '95%' }}
-            id="fullName"
-            name="fullName"
-            label="Usuário"
-            placeholder="Digite seu usuario"
-            value={formik.values.fullName}
-            onChange={formik.handleChange}
-            error={formik.touched.fullName && Boolean(formik.errors.fullName)}
-            helperText={formik.touched.fullName && formik.errors.fullName}
-            margin="dense"
-          />
-          <TextField
-            sx={{ width: '95%' }}
-            id="password"
-            name="password"
-            label="Senha"
-            placeholder='Digite sua senha'
-            type="password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            error={formik.touched.password && Boolean(formik.errors.password)}
-            helperText={formik.touched.password && formik.errors.password}
-            margin="dense"
-          />
-          <FormControlLabel sx={{ paddingLeft: 1, float: 'left' }}
-            control={
-              <Checkbox name="checkedB" color="primary" />
-            }
-            label="Lembra-me"
-          />
+          {textFields.map((textField, i) => (
+            <TextField
+              key={i}
+              id={textField.name}
+              name={textField.name}
+              label={textField.label}
+              placeholder={textField.label}
+              type={textField.type}
+              value={formik.values?.[textField.name]}
+              error={formik.touched?.[textField.name] && Boolean(formik.errors?.[textField.name])}
+              helperText={formik.touched?.[textField.name] && formik.errors?.[textField.name]}
+              onChange={formik.handleChange}
+              margin="dense"
+              sx={{ width: '95%' }}
+            />
+          ))}
           <Button
-            sx={{ width: '95%', margin: '8px 0', bgcolor: 'primaryColor' }}
+            sx={{ bgcolor: 'primaryColor', width: '95%', marginTop: 3 }}
             type='submit'
             color='primary'
             variant='contained'
           >
             Entrar
           </Button>
+          <ToastContainer />
         </form>
-        <Typography >
-          <Link to="/reset" >
-            Esqueceu a senha?
-          </Link>
-        </Typography>
-        <Typography> Ainda não possui conta?
+        <Box sx={{ marginTop: 2 }}>
+          <Typography>
+            Ainda não possui conta?
+          </Typography>
           <Link to="/register">
-            Cadastre-se?
+            <Typography sx={{ color: 'primaryColor', fontWeight: 500 }}>
+              Cadastre-se
+            </Typography>
           </Link>
-        </Typography>
+        </Box>
       </Paper>
-      <ToastContainer />
     </Box>
   )
 }
+
 export default Login

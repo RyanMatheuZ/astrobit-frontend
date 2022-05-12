@@ -1,10 +1,6 @@
 import React from 'react'
 
-import { Box } from '@mui/material'
-
-import ReactPlaceholder from 'react-placeholder'
-
-import 'react-placeholder/lib/reactPlaceholder.css'
+import { Box, Skeleton } from '@mui/material'
 
 const CardLoading = ({ amountOfCoinsPerPage, dataIsInTheLoadingPhase }) =>
   <>
@@ -18,14 +14,15 @@ const CardLoading = ({ amountOfCoinsPerPage, dataIsInTheLoadingPhase }) =>
               sx={{ bgcolor: 'white', borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '20px', borderBottomLeftRadius: '20px', boxShadow: 6, cursor: 'default', width: '350px', p: 3 }}
             >
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                <ReactPlaceholder showLoadingAnimation={true} type="round" style={{ width: 50, height: 50 }} />
-                <ReactPlaceholder showLoadingAnimation={true} type="round" style={{ width: 30, height: 30 }} />
+                <Skeleton animation="wave" variant="circular" width={50} height={50} />
+                <Skeleton animation="wave" variant="circular" width={30} height={30} />
               </Box>
               <Box>
-                <ReactPlaceholder showLoadingAnimation={true} type="text" rows={2} />
+                <Skeleton animation="wave" variant="text" />
+                <Skeleton animation="wave" variant="text" />
               </Box>
               <Box sx={{ mt: 3 }}>
-                <ReactPlaceholder showLoadingAnimation={true} type="text" rows={1} />
+                <Skeleton animation="wave" variant="text" />
               </Box>
             </Box>
           ))
