@@ -59,7 +59,7 @@ const PlatformText = () =>
 
       <ExchangeInfo icon="exchange-one" title="+50 criptoativos para negociar" text="Aqui você encontra Bitcoin e outras criptomoedas, tokens DeFi, tokens NFT, games e metaverso." />
       <ExchangeInfo icon="exchange-two" title="Benefícios para você" text="Com garantia cripto, depósitos e saques BRL via PIX e o melhor atendimento do Brasil você encontra aqui." />
-      <ExchangeInfo icon="exchange-three" title="Muita praticidade" text="Uma plataforma sensacional, feita para todo tipo de usuário, seja iniciante, intermediário ou avançado." />
+      <ExchangeInfo icon="exchange-three" title="Muita praticidade" text="Uma plataforma sensacional, feita para todo tipo de usuário, seja conservador, moderado ou experiente." />
     </Box>
   </Grid>
 
