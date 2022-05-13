@@ -1,19 +1,23 @@
 const textFields = [
   {
     name: 'name',
-    label: 'Nome'
+    label: 'Nome',
+    type: 'text'
   },
   {
     name: 'email',
-    label: 'E-mail'
+    label: 'E-mail',
+    type: 'email'
   },
   {
     name: 'password',
-    label: 'Senha'
+    label: 'Senha',
+    type: 'password'
   },
   {
     name: 'passwordConfirm',
-    label: 'Confirme sua senha'
+    label: 'Confirme sua senha',
+    type: 'password'
   }
 ]
 

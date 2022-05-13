@@ -2,12 +2,12 @@ const textFields = [
   {
     name: 'login',
     label: 'E-mail',
-    type: 'string'
+    type: 'email'
   },
   {
     name: 'password',
     label: 'Senha',
-    type: 'string'
+    type: 'password'
   }
 ]
 

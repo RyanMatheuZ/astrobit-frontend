@@ -88,6 +88,7 @@ const Register = () => {
               label={textField.label}
               placeholder={textField.label}
               value={formik.values?.[textField.name]}
+              type={textField.type}
               error={formik.touched?.[textField.name] && Boolean(formik.errors?.[textField.name])}
               helperText={formik.touched?.[textField.name] && formik.errors?.[textField.name]}
               onChange={formik.handleChange}
