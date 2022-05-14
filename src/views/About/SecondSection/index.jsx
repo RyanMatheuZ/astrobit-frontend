@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import { Grid, Box, Typography } from '@mui/material'
+import { Grid, Box, Typography } from '@mui/material';
 
-const SecondText = () =>
+const SecondText = () => (
   <Grid
     container
     sx={{ mt: 8 }}
@@ -15,7 +15,9 @@ const SecondText = () =>
     >
       <Typography
         component="h3"
-        sx={{ color: 'primaryColor', textAlign: 'left', fontSize: { xs: '20px', md: '28px' }, fontFamily: 'Montserrat', fontWeight: 600, mb: 1 }}
+        sx={{
+          color: 'primaryColor', textAlign: 'left', fontSize: { xs: '20px', md: '28px' }, fontFamily: 'Montserrat', fontWeight: 600, mb: 1,
+        }}
       >
         Paixão em construir o futuro
       </Typography>
@@ -30,7 +32,7 @@ const SecondText = () =>
       sx={{ display: 'flex', justifyContent: 'center', my: 2 }}
     >
       <img
-        src={process.env.PUBLIC_URL + '/icons/about-two.svg'}
+        src={`${process.env.PUBLIC_URL}/icons/about-two.svg`}
         alt="Estudante"
         title="Estudante"
         draggable="false"
@@ -38,10 +40,12 @@ const SecondText = () =>
       />
     </Grid>
   </Grid>
+);
 
-const SecondSection = () =>
+const SecondSection = () => (
   <Box component="section">
     <SecondText />
   </Box>
+);
 
-export default SecondSection
+export default SecondSection;

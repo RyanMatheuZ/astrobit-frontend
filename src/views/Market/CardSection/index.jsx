@@ -1,19 +1,26 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Box, Typography, Button } from '@mui/material'
-import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded'
+import { Box, Typography, Button } from '@mui/material';
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 
-const CardSection = ({ name, symbol, currentPrice, image, fiatCurrency }) => {
-  const favoriteCoin = (name) => alert(name)
+const CardSection = ({
+  name, symbol, currentPrice, image, fiatCurrency,
+}) => {
+  const favoriteCoin = () => alert(name);
 
   return (
     <Box
       component="article"
-      sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'white', borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '20px', borderBottomLeftRadius: '20px', boxShadow: 6, cursor: 'default', width: '350px', p: 3 }}
+      sx={{
+        display: 'flex', flexDirection: 'column', bgcolor: 'white', borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '20px', borderBottomLeftRadius: '20px', boxShadow: 6, cursor: 'default', width: '350px', p: 3,
+      }}
     >
       <Box
         component="figure"
-        sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}
+        sx={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1,
+        }}
       >
         <img
           src={image}
@@ -26,7 +33,9 @@ const CardSection = ({ name, symbol, currentPrice, image, fiatCurrency }) => {
 
         <Button
           onClick={() => favoriteCoin(name)}
-          sx={{ display: 'flex', alignItems: 'center', borderRadius: '5px', p: 1.5 }}
+          sx={{
+            display: 'flex', alignItems: 'center', borderRadius: '5px', p: 1.5,
+          }}
         >
           <FavoriteRoundedIcon color="warning" fontSize="medium" />
         </Button>
@@ -67,7 +76,15 @@ const CardSection = ({ name, symbol, currentPrice, image, fiatCurrency }) => {
         </Typography>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default CardSection
+CardSection.propTypes = {
+  name: PropTypes.string.isRequired,
+  symbol: PropTypes.string.isRequired,
+  currentPrice: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  fiatCurrency: PropTypes.string.isRequired,
+};
+
+export default CardSection;

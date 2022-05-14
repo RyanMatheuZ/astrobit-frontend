@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 import {
   AppBar,
@@ -9,25 +9,25 @@ import {
   Button,
   IconButton,
   Menu,
-  MenuItem
-} from '@mui/material'
+  MenuItem,
+} from '@mui/material';
 
-import MenuIcon from '@mui/icons-material/Menu'
-import DropdownMenu from './DropdownMenu'
-import Logo from '../../Elements/Logo'
-import Container from '../../Layouts/Container'
+import MenuIcon from '@mui/icons-material/Menu';
+import DropdownMenu from './DropdownMenu';
+import Logo from '../../Elements/Logo';
+import Container from '../../Layouts/Container';
 
 const pages = [
   { label: 'Início', path: '/' },
   { label: 'Sobre', path: '/about' },
   { label: 'Mercado', path: '/market' },
   { label: 'Contato', path: '/contact' },
-]
+];
 
 const Header = () => {
-  const [anchorElNav, setAnchorElNav] = useState(null)
-  const handleOpenNavMenu = event => setAnchorElNav(event.currentTarget)
-  const handleCloseNavMenu = () => setAnchorElNav(null)
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
+  const handleCloseNavMenu = () => setAnchorElNav(null);
 
   return (
     <AppBar position="static" component="header" sx={{ bgcolor: 'white', boxShadow: 0 }}>
@@ -36,13 +36,15 @@ const Header = () => {
           <Logo flexGrowValue={1} />
 
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((item, i) => (
-              <Link key={i} to={item.path}>
+            {pages.map((page) => (
+              <Link key={page.label} to={page.path}>
                 <Button
                   onClick={handleCloseNavMenu}
-                  sx={{ color: 'blackColor', textTransform: 'capitalize', fontSize: 'h6.fontSize', fontWeight: 500, my: 2, px: 2, display: 'block' }}
+                  sx={{
+                    color: 'blackColor', textTransform: 'capitalize', fontSize: 'h6.fontSize', fontWeight: 500, my: 2, px: 2, display: 'block',
+                  }}
                 >
-                  {item.label}
+                  {page.label}
                 </Button>
               </Link>
             ))}
@@ -77,10 +79,10 @@ const Header = () => {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
-              {pages.map((item, i) => (
-                <Link key={i} to={item.path}>
+              {pages.map((page) => (
+                <Link key={page.label} to={page.path}>
                   <MenuItem sx={{ color: 'blackColor' }} onClick={handleCloseNavMenu}>
-                    {item.label}
+                    {page.label}
                   </MenuItem>
                 </Link>
               ))}
@@ -90,7 +92,7 @@ const Header = () => {
         </Toolbar>
       </Container>
     </AppBar>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Box } from '@mui/material'
+import { Box } from '@mui/material';
 
-import Header from '../../Modules/Header'
-import Footer from '../../Modules/Footer'
+import Header from '../../Modules/Header';
+import Footer from '../../Modules/Footer';
 
-const LayoutDefault = ({ children }) =>
+const LayoutDefault = ({ children }) => (
   <>
     <Header />
     <Box sx={{ my: 8 }}>
@@ -13,5 +14,10 @@ const LayoutDefault = ({ children }) =>
     </Box>
     <Footer />
   </>
+);
 
-export default LayoutDefault
+LayoutDefault.propTypes = {
+  children: PropTypes.element.isRequired,
+};
+
+export default LayoutDefault;

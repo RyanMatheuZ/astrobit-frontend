@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-import HelmetContainer from '../../components/HelmetContainer'
-import LayoutDefaut from '../../components/Layouts/LayoutDefault'
-import Container from '../../components/Layouts/Container'
-import ContainerGlassmorphism from '../../components/Layouts/ContainerGlassmorphism'
+import HelmetContainer from '../../components/HelmetContainer';
+import LayoutDefaut from '../../components/Layouts/LayoutDefault';
+import Container from '../../components/Layouts/Container';
+import ContainerGlassmorphism from '../../components/Layouts/ContainerGlassmorphism';
 
-import InitalSection from './InitialSection'
-import InfoSection from './InfoSection'
-import PlatformSection from './PlarformSection'
-import PartnerSection from './PartnerSection'
+import InitalSection from './InitialSection';
+import InfoSection from './InfoSection';
+import PlatformSection from './PlarformSection';
+import PartnerSection from './PartnerSection';
 
-const Home = () =>
+const Home = () => (
   <LayoutDefaut>
     <HelmetContainer
       title="Início"
@@ -27,5 +27,6 @@ const Home = () =>
       <PartnerSection />
     </Container>
   </LayoutDefaut>
+);
 
-export default Home
+export default Home;

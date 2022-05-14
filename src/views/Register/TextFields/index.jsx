@@ -2,23 +2,23 @@ const textFields = [
   {
     name: 'name',
     label: 'Nome',
-    type: 'text'
+    type: 'text',
   },
   {
     name: 'email',
     label: 'E-mail',
-    type: 'email'
+    type: 'email',
   },
   {
     name: 'password',
     label: 'Senha',
-    type: 'password'
+    type: 'password',
   },
   {
     name: 'passwordConfirm',
     label: 'Confirme sua senha',
-    type: 'password'
-  }
-]
+    type: 'password',
+  },
+];
 
-export default textFields
+export default textFields;

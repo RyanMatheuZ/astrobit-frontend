@@ -1,23 +1,25 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import * as yup from 'yup'
-import { useFormik } from 'formik'
+import * as yup from 'yup';
+import { useFormik } from 'formik';
 
-import axios from 'axios'
+import axios from 'axios';
 
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify';
 
-import { Box, Paper, Grid, TextField, Button, Typography } from '@mui/material'
+import {
+  Box, Paper, Grid, TextField, Button, Typography,
+} from '@mui/material';
 
-import Logo from '../../components/Elements/Logo'
+import Logo from '../../components/Elements/Logo';
 
-import textFields from './TextFields'
+import textFields from './TextFields';
 
-import 'react-toastify/dist/ReactToastify.min.css'
+import 'react-toastify/dist/ReactToastify.min.css';
 
 const Register = () => {
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,}$/
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,}$/;
 
   const validationSchema = yup.object({
     name: yup
@@ -35,54 +37,61 @@ const Register = () => {
     passwordConfirm: yup.string()
       .label('Confirme sua senha')
       .required('Confirme sua senha')
-      .oneOf([yup.ref('password')], 'Senhas não correspondem')
-  })
+      .oneOf([yup.ref('password')], 'Senhas não correspondem'),
+  });
   const formik = useFormik({
     initialValues: {
       name: '',
       email: '',
       password: '',
-      passwordConfirm: ''
+      passwordConfirm: '',
     },
-    validationSchema: validationSchema,
+    validationSchema,
     onSubmit: (values, { resetForm }) => {
       axios.post('https://localhost:5001/api/Authenticate/register', {
         name: values.name,
         email: values.email,
-        password: values.password
+        password: values.password,
       })
-        .then(response => {
-          console.log(response.data)
-          toast.success('Usuário cadastrado com sucesso!')
-          resetForm()
-        }).catch(error => {
-          console.log(error)
-          toast.error('Usuário já existente!')
-          resetForm()
-        })
-    }
-  })
+        .then((response) => {
+          console.log(response.data);
+          toast.success('Usuário cadastrado com sucesso!');
+          resetForm();
+        }).catch((error) => {
+          console.log(error);
+          toast.error('Usuário já existente!');
+          resetForm();
+        });
+    },
+  });
 
   return (
-    <Box sx={{ bgcolor: 'white', borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '20px', borderBottomLeftRadius: '20px', boxShadow: 6, cursor: 'default', maxWidth: '400px', margin: '0 auto', fontFamily: 'Montserrat' }}>
+    <Box sx={{
+      bgcolor: 'white', borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '20px', borderBottomLeftRadius: '20px', boxShadow: 6, cursor: 'default', maxWidth: '400px', margin: '0 auto', fontFamily: 'Montserrat',
+    }}
+    >
       <Paper
         elevation={10}
-        align='center'
-        style={{ padding: 15, height: 'auto', width: 'auto', margin: "50px auto", fontFamily: 'Montserrat' }}
+        align="center"
+        style={{
+          padding: 15, height: 'auto', width: 'auto', margin: '50px auto', fontFamily: 'Montserrat',
+        }}
       >
-        <Grid align='center' >
+        <Grid align="center">
           <Logo />
           <Typography
-            sx={{ color: 'primaryColor', marginBlock: 2, fontWeight: 700, fontSize: 25 }}
+            sx={{
+              color: 'primaryColor', marginBlock: 2, fontWeight: 700, fontSize: 25,
+            }}
             margin="dense"
           >
             Cadastre-se
           </Typography>
         </Grid>
         <form onSubmit={formik.handleSubmit}>
-          {textFields.map((textField, i) => (
+          {textFields.map((textField) => (
             <TextField
-              key={i}
+              key={textField.label}
               id={textField.name}
               name={textField.name}
               label={textField.label}
@@ -97,9 +106,9 @@ const Register = () => {
             />
           ))}
           <Button
-            type='submit'
-            color='primary'
-            variant='contained'
+            type="submit"
+            color="primary"
+            variant="contained"
             sx={{ width: '95%', marginTop: 3, bgcolor: 'primaryColor' }}
           >
             Cadastre-se
@@ -118,7 +127,7 @@ const Register = () => {
       </Paper>
       <ToastContainer />
     </Box>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

@@ -1,5 +1,5 @@
-import axios from 'axios'
+import axios from 'axios';
 
-const getHttpRequest = (url, params) => axios.get(url, { params })
+const getHttpRequest = (url, params) => axios.get(url, { params });
 
-export default getHttpRequest
+export default getHttpRequest;

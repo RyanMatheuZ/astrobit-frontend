@@ -1,47 +1,57 @@
-import React from 'react'
+import React from 'react';
 
-import { List, ListItem } from '@mui/material'
+import { List, ListItem } from '@mui/material';
 
-import FacebookIcon from '@mui/icons-material/Facebook'
-import InstagramIcon from '@mui/icons-material/Instagram'
-import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
-const social = [
+const socials = [
   {
-    imageIcon: <FacebookIcon sx={{ bgcolor: 'white', color: 'primaryColor', border: 2, borderColor: 'blackColor', borderRadius: 1, width: 35, height: 35 }} />,
+    label: 'Facebook',
+    imageIcon: <FacebookIcon sx={{
+      bgcolor: 'white', color: 'primaryColor', border: 2, borderColor: 'blackColor', borderRadius: 1, width: 35, height: 35,
+    }}
+    />,
     linkUrl: 'https://www.facebook.com',
-    title: 'Facebook'
   },
   {
-    imageIcon: <InstagramIcon sx={{ bgcolor: 'white', color: 'primaryColor', border: 2, borderColor: 'blackColor', borderRadius: 1, width: 35, height: 35 }} />,
+    label: 'Instagram',
+    imageIcon: <InstagramIcon sx={{
+      bgcolor: 'white', color: 'primaryColor', border: 2, borderColor: 'blackColor', borderRadius: 1, width: 35, height: 35,
+    }}
+    />,
     linkUrl: 'https://www.instagram.com',
-    title: 'Instagram'
   },
   {
-    imageIcon: <LinkedInIcon sx={{ bgcolor: 'white', color: 'primaryColor', border: 2, borderColor: 'blackColor', borderRadius: 1, width: 35, height: 35 }} />,
+    label: 'LinkedIn',
+    imageIcon: <LinkedInIcon sx={{
+      bgcolor: 'white', color: 'primaryColor', border: 2, borderColor: 'blackColor', borderRadius: 1, width: 35, height: 35,
+    }}
+    />,
     linkUrl: 'https://www.linkedin.com',
-    title: 'LinkedIn'
-  }
-]
+  },
+];
 
-const FooterSocial = () =>
+const FooterSocial = () => (
   <List sx={{ display: 'flex', flexDirection: { xs: 'row', md: 'column' } }}>
-    {social.map((item, i) => (
+    {socials.map((social) => (
       <ListItem
         disablePadding
-        key={i}
+        key={social.label}
         sx={{ mx: { xs: 0.5, md: 0 }, my: 0.5 }}
       >
         <a
-          href={item.linkUrl}
-          title={item.title}
+          href={social.linkUrl}
+          title={social.label}
           target="_blank"
           rel="noopener noreferrer"
         >
-          {item.imageIcon}
+          {social.imageIcon}
         </a>
       </ListItem>
     ))}
   </List>
+);
 
-export default FooterSocial
+export default FooterSocial;

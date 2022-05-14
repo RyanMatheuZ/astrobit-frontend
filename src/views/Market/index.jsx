@@ -1,78 +1,80 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
-import { Box, Typography, Pagination, FormControl, InputLabel, Select, MenuItem } from '@mui/material'
+import {
+  Box, Typography, Pagination, FormControl, InputLabel, Select, MenuItem,
+} from '@mui/material';
 
-import HelmetContainer from '../../components/HelmetContainer'
-import LayoutDefaut from '../../components/Layouts/LayoutDefault'
-import Container from '../../components/Layouts/Container'
+import HelmetContainer from '../../components/HelmetContainer';
+import LayoutDefaut from '../../components/Layouts/LayoutDefault';
+import Container from '../../components/Layouts/Container';
 
-import Title from './Title'
-import CardSection from './CardSection'
-import CardLoading from './CardLoading'
+import Title from './Title';
+import CardSection from './CardSection';
+import CardLoading from './CardLoading';
 
-import getHttpRequest from '../../utils/getHttpRequest'
+import getHttpRequest from '../../utils/getHttpRequest';
 
 const fiatCurrency = [
   { label: 'Dólar', short: 'usd', symbol: '$' },
   { label: 'Real', short: 'brl', symbol: 'R$' },
   { label: 'Euro', short: 'eur', symbol: '€' },
-  { label: 'Libra', short: 'gbp', symbol: '£' }
-]
+  { label: 'Libra', short: 'gbp', symbol: '£' },
+];
 
 const Market = () => {
-  const [dataIsInTheLoadingPhase, setDataIsInTheLoadingPhase] = useState(true)
+  const [dataIsInTheLoadingPhase, setDataIsInTheLoadingPhase] = useState(true);
 
-  const [allCoins, setAllCoins] = useState([])
-  const [page, setPage] = useState(1)
-  const [currentFiatCurrencyLabel, setCurrentFiatCurrencyLabel] = useState('usd')
-  const [currentFiatCurrencySymbol, setCurrentFiatCurrencySymbol] = useState('$')
-  const [currentPageNumber, setCurrentPageNumber] = useState(0)
-  const order = 'market_cap_desc'
-  const sparkline = true
+  const [allCoins, setAllCoins] = useState([]);
+  const [page, setPage] = useState(1);
+  const [currentFiatCurrencyLabel, setCurrentFiatCurrencyLabel] = useState('usd');
+  const [currentFiatCurrencySymbol, setCurrentFiatCurrencySymbol] = useState('$');
+  const [currentPageNumber, setCurrentPageNumber] = useState(0);
+  const order = 'market_cap_desc';
+  const sparkline = true;
 
-  const totalCoins = 150
-  const amountOfCoinsPerPage = 15
-  const numberOfPages = Math.ceil(totalCoins / amountOfCoinsPerPage)
+  const totalCoins = 150;
+  const amountOfCoinsPerPage = 15;
+  const numberOfPages = Math.ceil(totalCoins / amountOfCoinsPerPage);
 
   const getCurrentFiatCurrency = (labelCurrency) => {
-    const currentFiatCurrency = fiatCurrency.find(item => item.short === labelCurrency)
+    const currentFiatCurrency = fiatCurrency.find((item) => item.short === labelCurrency);
 
-    setCurrentFiatCurrencySymbol(currentFiatCurrency.symbol)
-  }
+    setCurrentFiatCurrencySymbol(currentFiatCurrency.symbol);
+  };
 
-  const handleChangeCurrency = event => {
-    const value = event.target.value
+  const handleChangeCurrency = (event) => {
+    const { value } = event.target;
 
-    setCurrentFiatCurrencyLabel(value)
-    getCurrentFiatCurrency(value)
-  }
+    setCurrentFiatCurrencyLabel(value);
+    getCurrentFiatCurrency(value);
+  };
 
   const handleChangePaginationButton = (event, value) => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
-    })
+      behavior: 'smooth',
+    });
 
-    setPage(value)
-    setCurrentPageNumber(value)
-  }
+    setPage(value);
+    setCurrentPageNumber(value);
+  };
 
-  const url = `${process.env.REACT_APP_CRYPTO_API}/coins/markets`
+  const url = `${process.env.REACT_APP_CRYPTO_API}/coins/markets`;
 
   useEffect(() => {
     getHttpRequest(url, {
       vs_currency: currentFiatCurrencyLabel,
-      order: order,
+      order,
       per_page: amountOfCoinsPerPage,
       page: currentPageNumber,
-      sparkline: sparkline
+      sparkline,
     })
-      .then(response => {
-        setAllCoins(response.data)
-        setDataIsInTheLoadingPhase(false)
+      .then((response) => {
+        setAllCoins(response.data);
+        setDataIsInTheLoadingPhase(false);
       })
-      .catch(error => console.error(error))
-  }, [url, currentFiatCurrencyLabel, order, amountOfCoinsPerPage, currentPageNumber, sparkline])
+      .catch((error) => console.error(error));
+  }, [url, currentFiatCurrencyLabel, order, amountOfCoinsPerPage, currentPageNumber, sparkline]);
 
   return (
     <LayoutDefaut>
@@ -82,21 +84,34 @@ const Market = () => {
       />
       <Container>
         <Title />
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end', paddingInline: 5, marginBottom: 3 }}>
+        <Box sx={{
+          display: 'flex', justifyContent: 'flex-end', paddingInline: 5, marginBottom: 3,
+        }}
+        >
           <FormControl sx={{ maxWidth: '150px', width: '100%' }}>
-            <InputLabel>Selecionar moeda</InputLabel>
+            <InputLabel>
+              Selecionar moeda
+            </InputLabel>
             <Select
               label="Selecionar moeda"
               value={currentFiatCurrencyLabel}
               onChange={handleChangeCurrency}
             >
-              {fiatCurrency.map((currency, i) => (
+              {fiatCurrency.map((currency) => (
                 <MenuItem
-                  key={i}
+                  key={currency.label}
                   value={currency.short}
                 >
                   <Typography sx={{ fontSize: '14px', fontWeight: '500' }}>
-                    {currency.label} - {currency.short.toLocaleUpperCase()} ({currency.symbol})
+                    {currency.label}
+                    {' '}
+                    -
+                    {' '}
+                    {currency.short.toLocaleUpperCase()}
+                    {' '}
+                    (
+                    {currency.symbol}
+                    )
                   </Typography>
                 </MenuItem>
               ))}
@@ -106,17 +121,19 @@ const Market = () => {
 
         <Box
           component="section"
-          sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 3 }}
+          sx={{
+            display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 3,
+          }}
         >
           {!dataIsInTheLoadingPhase && (
             <>
-              {allCoins.map((item, i) => (
+              {allCoins.map((allCoin) => (
                 <CardSection
-                  key={i}
-                  name={item.name}
-                  symbol={item.symbol}
-                  image={item.image}
-                  currentPrice={item.current_price}
+                  key={allCoin.name}
+                  name={allCoin.name}
+                  symbol={allCoin.symbol}
+                  image={allCoin.image}
+                  currentPrice={allCoin.current_price}
                   fiatCurrency={currentFiatCurrencySymbol}
                 />
               ))}
@@ -139,7 +156,7 @@ const Market = () => {
         </Box>
       </Container>
     </LayoutDefaut>
-  )
-}
+  );
+};
 
-export default Market
+export default Market;

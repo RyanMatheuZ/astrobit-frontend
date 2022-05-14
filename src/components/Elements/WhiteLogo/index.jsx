@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-import { Box } from '@mui/material'
+import { Box } from '@mui/material';
 
 const WhiteLogo = () => {
-  const logoUrl = `${process.env.PUBLIC_URL}/icons/logo/astrobit-white-logo.svg`
+  const logoUrl = `${process.env.PUBLIC_URL}/icons/logo/astrobit-white-logo.svg`;
 
   return (
     <Box component="div">
@@ -19,7 +19,7 @@ const WhiteLogo = () => {
         />
       </Link>
     </Box>
-  )
-}
+  );
+};
 
-export default WhiteLogo
+export default WhiteLogo;

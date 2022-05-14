@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-import HelmetContainer from '../../components/HelmetContainer'
-import LayoutDefaut from '../../components/Layouts/LayoutDefault'
-import Container from '../../components/Layouts/Container'
-import ContainerGlassmorphism from '../../components/Layouts/ContainerGlassmorphism'
+import HelmetContainer from '../../components/HelmetContainer';
+import LayoutDefaut from '../../components/Layouts/LayoutDefault';
+import Container from '../../components/Layouts/Container';
+import ContainerGlassmorphism from '../../components/Layouts/ContainerGlassmorphism';
 
-import Title from './Title'
-import CardSection from './CardSection'
-import InitalSection from './InitialSection'
-import SecondSection from './SecondSection'
+import Title from './Title';
+import CardSection from './CardSection';
+import InitalSection from './InitialSection';
+import SecondSection from './SecondSection';
 
-const About = () =>
+const About = () => (
   <LayoutDefaut>
     <HelmetContainer
       title="Sobre"
@@ -27,5 +27,6 @@ const About = () =>
       <SecondSection />
     </Container>
   </LayoutDefaut>
+);
 
-export default About
+export default About;

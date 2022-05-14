@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-import { Box } from '@mui/material'
+import { Box } from '@mui/material';
 
 const Logo = ({ flexGrowValue }) => {
-  const logoUrl = `${process.env.PUBLIC_URL}/icons/logo/astrobit-logo.svg`
+  const logoUrl = `${process.env.PUBLIC_URL}/icons/logo/astrobit-logo.svg`;
 
   return (
     <Box
@@ -22,7 +23,11 @@ const Logo = ({ flexGrowValue }) => {
         />
       </Link>
     </Box>
-  )
-}
+  );
+};
 
-export default Logo
+Logo.propTypes = {
+  flexGrowValue: PropTypes.number.isRequired,
+};
+
+export default Logo;

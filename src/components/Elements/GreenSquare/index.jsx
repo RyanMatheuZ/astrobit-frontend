@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-import { Box } from '@mui/material'
+import { Box } from '@mui/material';
 
-const GreenSquare = () =>
+const GreenSquare = () => (
   <Box
     component="span"
-    sx={{ bgcolor: 'secondaryColor', display: 'inline-block', borderRadius: '3px', width: '15px', height: '15px' }}
-  ></Box>
+    sx={{
+      bgcolor: 'secondaryColor', display: 'inline-block', borderRadius: '3px', width: '15px', height: '15px',
+    }}
+  />
+);
 
-export default GreenSquare
+export default GreenSquare;

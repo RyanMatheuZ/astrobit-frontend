@@ -1,18 +1,24 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Grid, Box, Typography } from '@mui/material'
+import { Grid, Box, Typography } from '@mui/material';
 
-import GreenSquare from '../../../components/Elements/GreenSquare'
+import GreenSquare from '../../../components/Elements/GreenSquare';
 
-const ParagraphText = ({ text }) =>
+const ParagraphText = ({ text }) => (
   <Typography
     component="p"
-    sx={{ color: 'blackColor', fontSize: { xs: '14px', md: '20px' }, fontFamily: 'Montserrat', fontWeight: 400, mx: 0.5, my: 1 }}
+    sx={{
+      color: 'blackColor', fontSize: { xs: '14px', md: '20px' }, fontFamily: 'Montserrat', fontWeight: 400, mx: 0.5, my: 1,
+    }}
   >
-    {text} < GreenSquare />
+    {text}
+    {' '}
+    <GreenSquare />
   </Typography>
+);
 
-const InitialText = () =>
+const InitialText = () => (
   <Grid
     item
     component="article"
@@ -27,7 +33,9 @@ const InitialText = () =>
         >
           <Typography
             component="h1"
-            sx={{ color: 'primaryColor', fontSize: { xs: '30px', md: '38px' }, fontFamily: 'Montserrat', fontWeight: 700, mb: 0.5 }}
+            sx={{
+              color: 'primaryColor', fontSize: { xs: '30px', md: '38px' }, fontFamily: 'Montserrat', fontWeight: 700, mb: 0.5,
+            }}
           >
             Astrobit
           </Typography>
@@ -40,7 +48,7 @@ const InitialText = () =>
           sx={{ display: 'flex', justifyContent: 'center' }}
         >
           <img
-            src={process.env.PUBLIC_URL + '/icons/line.svg'}
+            src={`${process.env.PUBLIC_URL}/icons/line.svg`}
             alt="Linha verde vertical"
             draggable="false"
             width="20"
@@ -59,10 +67,11 @@ const InitialText = () =>
           <ParagraphText text="Mais de 10 milhões de pessoas possuem criptoativos e já formam um grupo maior que o de investidores da B3 e do Tesouro Direto juntos" />
         </Grid>
       </Grid>
-    </Box >
-  </Grid >
+    </Box>
+  </Grid>
+);
 
-const InitialImage = () =>
+const InitialImage = () => (
   <Grid
     item
     component="article"
@@ -71,15 +80,16 @@ const InitialImage = () =>
     sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}
   >
     <img
-      src={process.env.PUBLIC_URL + '/images/pickaxe-bitcoin.png'}
+      src={`${process.env.PUBLIC_URL}/images/pickaxe-bitcoin.png`}
       alt="Picareta e Bitcoin"
       title="Picareta e Bitcoin"
       draggable="false"
       style={{ maxWidth: '450px', width: '100%' }}
     />
   </Grid>
+);
 
-const InitialSection = () =>
+const InitialSection = () => (
   <Grid
     component="section"
     container
@@ -87,5 +97,10 @@ const InitialSection = () =>
     <InitialText />
     <InitialImage />
   </Grid>
+);
 
-export default InitialSection
+ParagraphText.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
+export default InitialSection;

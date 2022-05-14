@@ -1,20 +1,20 @@
 const textFields = [
   {
     name: 'name',
-    label: 'Nome'
+    label: 'Nome',
   },
   {
     name: 'email',
-    label: 'E-mail'
+    label: 'E-mail',
   },
   {
     name: 'phone',
-    label: 'Telefone'
+    label: 'Telefone',
   },
   {
     name: 'doubt',
-    label: 'Dúvida'
-  }
-]
+    label: 'Dúvida',
+  },
+];
 
-export default textFields
+export default textFields;

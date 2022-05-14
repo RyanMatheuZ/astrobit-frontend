@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Grid, Box, Typography } from '@mui/material'
+import { Grid, Box, Typography } from '@mui/material';
 
-const PlatformImage = () =>
+const PlatformImage = () => (
   <Grid
     item
     xs={12}
@@ -10,22 +11,23 @@ const PlatformImage = () =>
     sx={{ display: 'flex', alignItems: 'center' }}
   >
     <img
-      src={process.env.PUBLIC_URL + '/mockups/mockup-devices.png'}
+      src={`${process.env.PUBLIC_URL}/mockups/mockup-devices.png`}
       alt="Astrobit em dispositivos"
       title="Astrobit em dispositivos"
       draggable="false"
       style={{ filter: 'drop-shadow(0px 5px 5px gray)', maxWidth: '600px', width: '100%' }}
     />
   </Grid>
+);
 
-const ExchangeInfo = ({ icon, title, text }) =>
+const ExchangeInfo = ({ icon, title, text }) => (
   <Box sx={{ display: 'flex', mb: 2 }}>
     <Box
       component="figure"
       sx={{ display: 'flex', alignItems: 'flex-start', mr: 1 }}
     >
       <img
-        src={process.env.PUBLIC_URL + `/icons/${icon}.svg`}
+        src={`${process.env.PUBLIC_URL}/icons/${icon}.svg`}
         alt={title}
         title={title}
         draggable="false"
@@ -34,16 +36,23 @@ const ExchangeInfo = ({ icon, title, text }) =>
     </Box>
 
     <Box>
-      <Typography sx={{ color: 'blackColor', fontSize: { xs: '18px', md: '20px' }, fontFamily: 'Montserrat', fontWeight: 600, mb: 1 }}>
+      <Typography sx={{
+        color: 'blackColor', fontSize: { xs: '18px', md: '20px' }, fontFamily: 'Montserrat', fontWeight: 600, mb: 1,
+      }}
+      >
         {title}
       </Typography>
-      <Typography sx={{ color: 'grayColor', fontSize: { xs: '14px', md: '16px' }, fontFamily: 'Montserrat', fontWeight: 400 }}>
+      <Typography sx={{
+        color: 'grayColor', fontSize: { xs: '14px', md: '16px' }, fontFamily: 'Montserrat', fontWeight: 400,
+      }}
+      >
         {text}
       </Typography>
     </Box>
   </Box>
+);
 
-const PlatformText = () =>
+const PlatformText = () => (
   <Grid
     item
     xs={12}
@@ -52,7 +61,9 @@ const PlatformText = () =>
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
       <Typography
         component="h2"
-        sx={{ color: 'primaryColor', fontSize: { xs: '22px', md: '30px' }, fontFamily: 'Montserrat', fontWeight: 700, mb: 3 }}
+        sx={{
+          color: 'primaryColor', fontSize: { xs: '22px', md: '30px' }, fontFamily: 'Montserrat', fontWeight: 700, mb: 3,
+        }}
       >
         Astrobit Exchange
       </Typography>
@@ -62,8 +73,9 @@ const PlatformText = () =>
       <ExchangeInfo icon="exchange-three" title="Muita praticidade" text="Uma plataforma sensacional, feita para todo tipo de usuário, seja conservador, moderado ou experiente." />
     </Box>
   </Grid>
+);
 
-const PlatformSection = () =>
+const PlatformSection = () => (
   <Grid
     component="section"
     container
@@ -72,5 +84,12 @@ const PlatformSection = () =>
     <PlatformImage />
     <PlatformText />
   </Grid>
+);
 
-export default PlatformSection
+ExchangeInfo.propTypes = {
+  icon: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};
+
+export default PlatformSection;

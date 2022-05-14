@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Grid, Box, Typography } from '@mui/material'
+import { Grid, Box, Typography } from '@mui/material';
 
-const Card = ({ header, text, image }) =>
-  <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', my: 2, mx: 3 }}>
+const Card = ({ header, text, image }) => (
+  <Box sx={{
+    display: 'flex', flexDirection: 'column', alignItems: 'center', my: 2, mx: 3,
+  }}
+  >
     <Box component="figure">
       <img
         src={`${process.env.PUBLIC_URL}/icons/${image}.svg`}
@@ -20,13 +24,14 @@ const Card = ({ header, text, image }) =>
       {text}
     </Typography>
   </Box>
+);
 
-const CardSection = () =>
+const CardSection = () => (
   <Grid
     container
     sx={{ py: 3 }}
   >
-    <Grid item xs={12} md={4} >
+    <Grid item xs={12} md={4}>
       <Card header="9.2" text="Melhor NPS entre todas as fintechs do Brasil" image="card-one" />
     </Grid>
     <Grid item xs={12} md={4} sx={{ borderLeft: { xs: 0, md: 2 }, borderRight: { xs: 0, md: 2 }, borderColor: { md: 'primaryColor' } }}>
@@ -36,5 +41,12 @@ const CardSection = () =>
       <Card header="14 bilhões" text="Em reais negociados de 2014 a 2021" image="card-three" />
     </Grid>
   </Grid>
+);
 
-export default CardSection
+Card.propTypes = {
+  header: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+};
+
+export default CardSection;

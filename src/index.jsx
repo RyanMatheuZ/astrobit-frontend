@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-import ReactDOM from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import { ThemeProvider } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/material/styles';
 
-import WebSiteRoutes from './routes'
+import WebSiteRoutes from './routes';
 
-import theme from './theme'
+import theme from './theme';
 
-import './styles/global.css'
+import './styles/global.css';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -17,5 +17,5 @@ ReactDOM.render(
       <WebSiteRoutes />
     </ThemeProvider>
   </BrowserRouter>,
-  document.getElementById('root')
-)
+  document.getElementById('root'),
+);

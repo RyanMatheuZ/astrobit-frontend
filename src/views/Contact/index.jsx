@@ -1,18 +1,20 @@
-import React from 'react'
-import * as yup from 'yup'
-import { useFormik } from 'formik'
-import { ToastContainer, toast } from 'react-toastify'
+import React from 'react';
+import * as yup from 'yup';
+import { useFormik } from 'formik';
+import { ToastContainer, toast } from 'react-toastify';
 
-import { TextField, Button, Typography, Grid, Box } from '@mui/material'
+import {
+  TextField, Button, Typography, Grid, Box,
+} from '@mui/material';
 
-import WhiteLogo from '../../components/Elements/WhiteLogo'
+import WhiteLogo from '../../components/Elements/WhiteLogo';
 
-import LayoutDefault from '../../components/Layouts/LayoutDefault'
-import Container from '../../components/Layouts/Container'
+import LayoutDefault from '../../components/Layouts/LayoutDefault';
+import Container from '../../components/Layouts/Container';
 
-import contacts from './Contacts'
-import logos from './Logos'
-import textFields from './TextFields'
+import contacts from './Contacts';
+import logos from './Logos';
+import textFields from './TextFields';
 
 const Contact = () => {
   const validationSchema = yup.object({
@@ -28,22 +30,22 @@ const Contact = () => {
       .required('O telefone é obrigatório'),
     doubt: yup
       .string()
-      .required('Digite sua dúvida')
-  })
+      .required('Digite sua dúvida'),
+  });
 
   const formik = useFormik({
     initialValues: {
       name: '',
       email: '',
       phone: '',
-      doubt: ''
+      doubt: '',
     },
-    validationSchema: validationSchema,
+    validationSchema,
     onSubmit: ({ resetForm }) => {
-      toast.success('Mensagem enviada com sucesso!')
-      resetForm()
-    }
-  })
+      toast.success('Mensagem enviada com sucesso!');
+      resetForm();
+    },
+  });
 
   return (
     <LayoutDefault>
@@ -51,8 +53,17 @@ const Contact = () => {
         <Grid
           container
           sx={{
-            display: 'flex', flexWrap: 'wrap', flexDirection: 'row', width: '100%', justifyContent: 'space-between',
-            borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '30px', borderBottomLeftRadius: '30px', boxShadow: 6, cursor: 'default'
+            display: 'flex',
+            flexWrap: 'wrap',
+            flexDirection: 'row',
+            width: '100%',
+            justifyContent: 'space-between',
+            borderLeft: 3,
+            borderColor: 'tertiaryColor',
+            borderTopRightRadius: '30px',
+            borderBottomLeftRadius: '30px',
+            boxShadow: 6,
+            cursor: 'default',
           }}
         >
           <Grid
@@ -60,26 +71,38 @@ const Contact = () => {
             xs={12}
             md={7}
             sx={{
-              display: 'flex', flexDirection: 'column', alignItems: 'center', bgcolor: 'white', padding: 3,
-              borderBottomLeftRadius: { xs: '0px', md: '30px' }, borderTopRightRadius: { xs: '30px', md: '0px' }
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              bgcolor: 'white',
+              padding: 3,
+              borderBottomLeftRadius: { xs: '0px', md: '30px' },
+              borderTopRightRadius: { xs: '30px', md: '0px' },
             }}
           >
-            <Typography sx={{ color: 'primaryColor', marginBlock: 1, fontSize: 25, fontWeight: 700 }}>
+            <Typography sx={{
+              color: 'primaryColor', marginBlock: 1, fontSize: 25, fontWeight: 700,
+            }}
+            >
               Contato
             </Typography>
             <form
               onSubmit={formik.handleSubmit}
-              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%' }}
+              style={{
+                display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%',
+              }}
             >
-              {textFields.map((textField, i) => (
+              {textFields.map((textField) => (
                 <TextField
-                  key={i}
+                  key={textField.label}
                   id={textField.name}
                   name={textField.name}
                   label={textField.label}
                   placeholder={textField.label}
                   value={formik.values?.[textField.name]}
-                  error={formik.touched?.[textField.name] && Boolean(formik.errors?.[textField.name])}
+                  error={
+                    formik.touched?.[textField.name] && Boolean(formik.errors?.[textField.name])
+                  }
                   helperText={formik.touched?.[textField.name] && formik.errors?.[textField.name]}
                   onChange={formik.handleChange}
                   margin="dense"
@@ -88,9 +111,9 @@ const Contact = () => {
               ))}
               <Button
                 sx={{ marginTop: 1, width: '40%' }}
-                type='submit'
-                color='primary'
-                variant='contained'
+                type="submit"
+                color="primary"
+                variant="contained"
               >
                 Enviar
               </Button>
@@ -100,14 +123,16 @@ const Contact = () => {
 
           <Grid
             item
-            xs={12} md={5} sx={{
-              display: 'flex', flexDirection: 'column', bgcolor: 'primaryColor', borderBottomLeftRadius: { xs: '30px', md: '0px' }, borderTopRightRadius: { xs: '0px', md: '30px' }, alignItems: 'center', padding: 3
+            xs={12}
+            md={5}
+            sx={{
+              display: 'flex', flexDirection: 'column', bgcolor: 'primaryColor', borderBottomLeftRadius: { xs: '30px', md: '0px' }, borderTopRightRadius: { xs: '0px', md: '30px' }, alignItems: 'center', padding: 3,
             }}
           >
             <Box>
               <Typography
                 sx={{
-                  fontSize: 25, fontWeight: 700, marginTop: 1, marginBottom: 1, color: 'white', textAlign: 'center'
+                  fontSize: 25, fontWeight: 700, marginTop: 1, marginBottom: 1, color: 'white', textAlign: 'center',
                 }}
               >
                 Informação para contato
@@ -115,10 +140,12 @@ const Contact = () => {
             </Box>
 
             <Box sx={{ marginBlock: 3 }}>
-              {contacts.map((contact, i) => (
+              {contacts.map((contact) => (
                 <Box
-                  key={i}
-                  sx={{ display: 'flex', marginLeft: 1, color: 'white', fontWeight: 500, marginBottom: 2, fontSize: 15 }}
+                  key={contact.label}
+                  sx={{
+                    display: 'flex', marginLeft: 1, color: 'white', fontWeight: 500, marginBottom: 2, fontSize: 15,
+                  }}
                 >
                   {contact.image}
                   <Typography sx={{ fontSize: 15 }}>
@@ -129,9 +156,9 @@ const Contact = () => {
             </Box>
 
             <Box sx={{ display: 'flex', marginBottom: 5 }}>
-              {logos.map((logo, i) => (
+              {logos.map((logo) => (
                 <Box
-                  key={i}
+                  key={logo.label}
                   component="figure"
                   sx={{ marginInline: '5px' }}
                 >
@@ -149,7 +176,7 @@ const Contact = () => {
         </Grid>
       </Container>
     </LayoutDefault>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
