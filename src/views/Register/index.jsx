@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
 
 import * as yup from 'yup';
@@ -9,9 +10,11 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
 import {
-  Box, Paper, Grid, TextField, Button, Typography,
+  Box, Paper, TextField, Button, Typography,
 } from '@mui/material';
 
+import HelmetContainer from '../../components/HelmetContainer';
+import ContainerForm from '../../components/Layouts/ContainerForm';
 import Logo from '../../components/Elements/Logo';
 
 import textFields from './TextFields';
@@ -66,67 +69,80 @@ const Register = () => {
   });
 
   return (
-    <Box sx={{
-      bgcolor: 'white', borderLeft: 3, borderColor: 'tertiaryColor', borderTopRightRadius: '20px', borderBottomLeftRadius: '20px', boxShadow: 6, cursor: 'default', maxWidth: '400px', margin: '0 auto', fontFamily: 'Montserrat',
-    }}
-    >
-      <Paper
-        elevation={10}
-        align="center"
-        style={{
-          padding: 15, height: 'auto', width: 'auto', margin: '50px auto', fontFamily: 'Montserrat',
-        }}
+    <ContainerForm>
+      <HelmetContainer
+        title="Cadastre-se"
+        description=""
+      />
+      <Box sx={{
+        bgcolor: 'white',
+        borderLeft: 3,
+        borderColor: 'tertiaryColor',
+        boxShadow: 6,
+        cursor: 'default',
+        maxWidth: '400px',
+        margin: '0 auto',
+        fontFamily: 'Montserrat',
+      }}
       >
-        <Grid align="center">
-          <Logo />
-          <Typography
-            sx={{
-              color: 'primaryColor', marginBlock: 2, fontWeight: 700, fontSize: 25,
-            }}
-            margin="dense"
-          >
-            Cadastre-se
-          </Typography>
-        </Grid>
-        <form onSubmit={formik.handleSubmit}>
-          {textFields.map((textField) => (
-            <TextField
-              key={textField.label}
-              id={textField.name}
-              name={textField.name}
-              label={textField.label}
-              placeholder={textField.label}
-              value={formik.values?.[textField.name]}
-              type={textField.type}
-              error={formik.touched?.[textField.name] && Boolean(formik.errors?.[textField.name])}
-              helperText={formik.touched?.[textField.name] && formik.errors?.[textField.name]}
-              onChange={formik.handleChange}
+        <Paper
+          elevation={10}
+          align="center"
+          style={{
+            padding: 15, height: 'auto', width: 'auto', margin: '50px auto', fontFamily: 'Montserrat',
+          }}
+        >
+          <Box>
+            <Logo />
+            <Typography
+              sx={{
+                color: 'primaryColor', marginBlock: 2, fontWeight: 700, fontSize: 25,
+              }}
               margin="dense"
-              sx={{ width: '95%' }}
-            />
-          ))}
-          <Button
-            type="submit"
-            color="primary"
-            variant="contained"
-            sx={{ width: '95%', marginTop: 3, bgcolor: 'primaryColor' }}
-          >
-            Cadastre-se
-          </Button>
-        </form>
-        <Box sx={{ marginTop: 2 }}>
-          <Typography>
-            Já possui conta?
-          </Typography>
-          <Link to="/login">
-            <Typography sx={{ color: 'primaryColor', fontWeight: 500 }}>
-              Entrar
+            >
+              Cadastre-se
             </Typography>
-          </Link>
-        </Box>
-      </Paper>
-      <ToastContainer />
-    </Box>
+          </Box>
+          <form onSubmit={formik.handleSubmit}>
+            {textFields.map((textField) => (
+              <TextField
+                key={textField.label}
+                id={textField.name}
+                name={textField.name}
+                label={textField.label}
+                placeholder={textField.label}
+                value={formik.values?.[textField.name]}
+                type={textField.type}
+                error={formik.touched?.[textField.name] && Boolean(formik.errors?.[textField.name])}
+                helperText={formik.touched?.[textField.name] && formik.errors?.[textField.name]}
+                onChange={formik.handleChange}
+                margin="dense"
+                sx={{ width: '95%' }}
+              />
+            ))}
+            <Button
+              type="submit"
+              color="primary"
+              variant="contained"
+              sx={{ width: '95%', marginTop: 3, bgcolor: 'primaryColor' }}
+            >
+              Cadastre-se
+            </Button>
+          </form>
+          <Box sx={{ marginTop: 2 }}>
+            <Typography>
+              Já possui conta?
+            </Typography>
+            <Link to="/login">
+              <Typography sx={{ color: 'primaryColor', fontWeight: 500 }}>
+                Entrar
+              </Typography>
+            </Link>
+          </Box>
+        </Paper>
+        <ToastContainer />
+      </Box>
+    </ContainerForm>
   );
 };
 
