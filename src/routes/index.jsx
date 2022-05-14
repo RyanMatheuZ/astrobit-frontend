@@ -6,9 +6,10 @@ import Home from '../views/Home';
 import About from '../views/About';
 import Market from '../views/Market';
 import Contact from '../views/Contact';
-import Admin from '../views/Admin';
 import Login from '../views/Login';
 import Register from '../views/Register';
+import Admin from '../views/Admin';
+import NotFound from '../views/NotFound';
 
 const WebSiteRoutes = () => (
   <Routes>
@@ -19,6 +20,7 @@ const WebSiteRoutes = () => (
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
     <Route path="/admin" element={<Admin />} />
+    <Route path="*" element={<NotFound />} />
   </Routes>
 );
 

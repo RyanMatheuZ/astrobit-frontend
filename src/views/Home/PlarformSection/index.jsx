@@ -11,7 +11,7 @@ const PlatformImage = () => (
     sx={{ display: 'flex', alignItems: 'center' }}
   >
     <img
-      src={`${process.env.PUBLIC_URL}/mockups/mockup-devices.png`}
+      src={`${process.env.PUBLIC_URL}/images/mockup-devices.png`}
       alt="Astrobit em dispositivos"
       title="Astrobit em dispositivos"
       draggable="false"
