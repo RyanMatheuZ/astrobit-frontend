@@ -80,7 +80,7 @@ const DropdownMenu = () => {
       >
         <MenuItem>
           <ListItemIcon>
-            <Avatar fontSize="small" sx={{ color: 'primaryColor' }} />
+            <Avatar fontSize="small" sx={{ color: 'primaryColor', bgcolor: 'white' }} />
           </ListItemIcon>
           Minha conta
         </MenuItem>

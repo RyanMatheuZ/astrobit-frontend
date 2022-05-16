@@ -63,7 +63,6 @@ const Register = () => {
         }).catch((error) => {
           console.log(error);
           toast.error('Usuário já existente!');
-          resetForm();
         });
     },
   });
@@ -140,8 +139,8 @@ const Register = () => {
             </Link>
           </Box>
         </Paper>
-        <ToastContainer />
       </Box>
+      <ToastContainer />
     </ContainerForm>
   );
 };

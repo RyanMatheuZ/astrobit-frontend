@@ -18,6 +18,7 @@
         "react"
     ],
     "rules": {
+      "linebreak-style": 0,
       "react/function-component-definition": [2, { "namedComponents": "arrow-function" }],
       "react/prop-types": [2, { "skipUndeclared": false }],
       "react/jsx-one-expression-per-line": [2, { "allow": "none" }],

@@ -9,6 +9,7 @@ import {
 
 import WhiteLogo from '../../components/Elements/WhiteLogo';
 
+import HelmetContainer from '../../components/HelmetContainer';
 import LayoutDefault from '../../components/Layouts/LayoutDefault';
 import Container from '../../components/Layouts/Container';
 
@@ -41,7 +42,7 @@ const Contact = () => {
       doubt: '',
     },
     validationSchema,
-    onSubmit: ({ resetForm }) => {
+    onSubmit: (values, { resetForm }) => {
       toast.success('Mensagem enviada com sucesso!');
       resetForm();
     },
@@ -49,6 +50,10 @@ const Contact = () => {
 
   return (
     <LayoutDefault>
+      <HelmetContainer
+        title="Contato"
+        description="Entre em contato e tire suas dúvidas com nossos especialistas!"
+      />
       <Container>
         <Grid
           container
