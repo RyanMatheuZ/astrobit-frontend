@@ -1,4 +1,4 @@
-const textFields = [
+export const textFields = [
   {
     name: 'name',
     label: 'Nome',
@@ -19,6 +19,17 @@ const textFields = [
     label: 'Confirme sua senha',
     type: 'password',
   },
+
 ];
 
-export default textFields;
+export const perfis = [
+  {
+    value: 'Conservador',
+  },
+  {
+    value: 'Moderado',
+  },
+  {
+    value: 'Experiente',
+  },
+];

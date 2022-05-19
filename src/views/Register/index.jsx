@@ -10,14 +10,13 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
 import {
-  Box, Paper, TextField, Button, Typography,
+  Box, Paper, TextField, Button, Typography, Select, FormControl, InputLabel, MenuItem,
 } from '@mui/material';
 
 import HelmetContainer from '../../components/HelmetContainer';
 import ContainerForm from '../../components/Layouts/ContainerForm';
 import Logo from '../../components/Elements/Logo';
-
-import textFields from './TextFields';
+import { textFields, perfis } from './TextFields';
 
 import 'react-toastify/dist/ReactToastify.min.css';
 
@@ -51,10 +50,10 @@ const Register = () => {
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
-      axios.post('https://localhost:5001/api/Authenticate/register', {
-        name: values.name,
-        email: values.email,
-        password: values.password,
+      axios.post('https://localhost:5001/api/Usuario', {
+        nome: values.name,
+        login: values.email,
+        senha: values.password,
       })
         .then((response) => {
           console.log(response.data);
@@ -119,6 +118,26 @@ const Register = () => {
                 sx={{ width: '95%' }}
               />
             ))}
+            <FormControl sx={{ width: '95%' }} margin="dense">
+              <InputLabel>
+                Perfil do investidor
+              </InputLabel>
+              <Select
+                label="Perfil do investidor"
+                value=""
+                onChange=""
+              >
+                {perfis.map((currency) => (
+                  <MenuItem
+                    value={currency.value}
+                  >
+                    <Typography sx={{ fontSize: '14px', fontWeight: '500' }}>
+                      {currency.value}
+                    </Typography>
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
             <Button
               type="submit"
               color="primary"

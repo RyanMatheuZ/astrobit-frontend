@@ -38,19 +38,18 @@ const Login = () => {
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
-      axios.post('https://localhost:5001/api/Authenticate/login', {
-        login: values.name,
-        password: values.password,
+      axios.post('https://localhost:5001/api/Usuario/login', {
+        login: values.login,
+        senha: values.password,
       })
         .then((response) => {
-          console.log(response);
+          console.log(response.data.usuarioId.id);
           toast.success('Usuário logado com sucesso!');
           resetForm();
         })
         .catch((error) => {
           console.log(`Error: ${error}`);
           toast.error('Usuário ou senha inválida');
-          resetForm();
         });
     },
   });
