@@ -24,11 +24,11 @@ import 'react-toastify/dist/ReactToastify.min.css';
 const Login = () => {
   const validationSchema = yup.object({
     login: yup
-      .string('Digite seu usuário')
-      .required('O usuário é obrigatório'),
+      .string('Digite seu usuário!')
+      .required('Usuário é obrigatório!'),
     password: yup
-      .string('Digite sua senha')
-      .required('Senha é obrigatória'),
+      .string('Digite sua senha!')
+      .required('Senha é obrigatória!'),
   });
 
   const formik = useFormik({
@@ -58,7 +58,7 @@ const Login = () => {
     <ContainerForm>
       <HelmetContainer
         title="Entrar"
-        description=""
+        description="Entre em sua conta e confira o melhor do mundo tecnológico!"
       />
       <Box sx={{
         bgcolor: 'white',

@@ -1,11 +1,11 @@
-export const textFields = [
+const textFields = [
   {
     name: 'name',
     label: 'Nome',
     type: 'text',
   },
   {
-    name: 'email',
+    name: 'login',
     label: 'E-mail',
     type: 'email',
   },
@@ -14,22 +14,8 @@ export const textFields = [
     label: 'Senha',
     type: 'password',
   },
-  {
-    name: 'passwordConfirm',
-    label: 'Confirme sua senha',
-    type: 'password',
-  },
-
 ];
 
-export const perfis = [
-  {
-    value: 'Conservador',
-  },
-  {
-    value: 'Moderado',
-  },
-  {
-    value: 'Experiente',
-  },
-];
+const investorProfile = ['Conservador', 'Moderado', 'Experiente'];
+
+export { textFields, investorProfile };

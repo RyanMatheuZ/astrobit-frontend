@@ -70,14 +70,19 @@ const Header = () => {
                 vertical: 'bottom',
                 horizontal: 'left',
               }}
-              keepMounted
               transformOrigin={{
                 vertical: 'top',
                 horizontal: 'left',
               }}
+              keepMounted
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}
+              PaperProps={{
+                sx: {
+                  width: '100%',
+                },
+              }}
             >
               {pages.map((page) => (
                 <Link key={page.label} to={page.path}>

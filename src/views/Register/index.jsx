@@ -16,7 +16,8 @@ import {
 import HelmetContainer from '../../components/HelmetContainer';
 import ContainerForm from '../../components/Layouts/ContainerForm';
 import Logo from '../../components/Elements/Logo';
-import { textFields, perfis } from './TextFields';
+
+import { textFields, investorProfile } from './TextFields';
 
 import 'react-toastify/dist/ReactToastify.min.css';
 
@@ -25,34 +26,32 @@ const Register = () => {
 
   const validationSchema = yup.object({
     name: yup
-      .string('Digite seu nome')
-      .required('o nome é obrigatório'),
-    email: yup
-      .string('Digite seu e-mail')
-      .email('Digite um e-mail valido')
-      .required('o e-mail é obrigatório'),
+      .string('Digite seu nome!')
+      .required('Nome é obrigatório!'),
+    login: yup
+      .string('Digite seu e-mail!')
+      .email('Digite um e-mail valido!')
+      .required('E-mail é obrigatório!'),
     password: yup
-      .string('Digite sua senha')
-      .min(5, 'A senha deve ter no mínimo 5 caracteres')
-      .matches(passwordRegex, 'A senha precisa ter no mínimo 5 caracteres,\n uma letra maiúscula e uma letra minúscula,\n um número e um caracter especial')
-      .required('Senha é obrigatória'),
-    passwordConfirm: yup.string()
-      .label('Confirme sua senha')
-      .required('Confirme sua senha')
-      .oneOf([yup.ref('password')], 'Senhas não correspondem'),
+      .string('Digite sua senha!')
+      .min(5, 'Senha deve ter no mínimo 5 caracteres!')
+      .matches(passwordRegex, 'Senha deve ter no mínimo 5 caracteres!,\n uma letra maiúscula e uma letra minúscula!,\n um número e um caracter especial!')
+      .required('Senha é obrigatória!'),
+    investorProfile: yup
+      .string('Selecione um perfil!')
+      .required('Perfil é obrigtório!'),
   });
   const formik = useFormik({
     initialValues: {
       name: '',
-      email: '',
+      login: '',
       password: '',
-      passwordConfirm: '',
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
       axios.post('https://localhost:5001/api/Usuario', {
         nome: values.name,
-        login: values.email,
+        login: values.login,
         senha: values.password,
       })
         .then((response) => {
@@ -70,7 +69,7 @@ const Register = () => {
     <ContainerForm>
       <HelmetContainer
         title="Cadastre-se"
-        description=""
+        description="Crie agora uma conta na maior exchange da América Latina!"
       />
       <Box sx={{
         bgcolor: 'white',
@@ -118,7 +117,7 @@ const Register = () => {
                 sx={{ width: '95%' }}
               />
             ))}
-            <FormControl sx={{ width: '95%' }} margin="dense">
+            <FormControl margin="dense" sx={{ width: '95%' }}>
               <InputLabel>
                 Perfil do investidor
               </InputLabel>
@@ -127,12 +126,10 @@ const Register = () => {
                 value=""
                 onChange=""
               >
-                {perfis.map((currency) => (
-                  <MenuItem
-                    value={currency.value}
-                  >
+                {investorProfile.map((profile) => (
+                  <MenuItem value={profile}>
                     <Typography sx={{ fontSize: '14px', fontWeight: '500' }}>
-                      {currency.value}
+                      {profile}
                     </Typography>
                   </MenuItem>
                 ))}

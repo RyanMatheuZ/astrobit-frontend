@@ -10,7 +10,7 @@ const socials = [
   {
     label: 'Facebook',
     imageIcon: <FacebookIcon sx={{
-      bgcolor: 'white', color: 'primaryColor', border: 2, borderColor: 'blackColor', borderRadius: 1, width: 35, height: 35,
+      bgcolor: 'white', color: 'primaryColor', borderRadius: 1, width: 35, height: 35,
     }}
     />,
     linkUrl: 'https://www.facebook.com',
@@ -18,7 +18,7 @@ const socials = [
   {
     label: 'Instagram',
     imageIcon: <InstagramIcon sx={{
-      bgcolor: 'white', color: 'primaryColor', border: 2, borderColor: 'blackColor', borderRadius: 1, width: 35, height: 35,
+      bgcolor: 'white', color: 'primaryColor', borderRadius: 1, width: 35, height: 35,
     }}
     />,
     linkUrl: 'https://www.instagram.com',
@@ -26,7 +26,7 @@ const socials = [
   {
     label: 'LinkedIn',
     imageIcon: <LinkedInIcon sx={{
-      bgcolor: 'white', color: 'primaryColor', border: 2, borderColor: 'blackColor', borderRadius: 1, width: 35, height: 35,
+      bgcolor: 'white', color: 'primaryColor', borderRadius: 1, width: 35, height: 35,
     }}
     />,
     linkUrl: 'https://www.linkedin.com',
