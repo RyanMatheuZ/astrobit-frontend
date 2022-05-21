@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import * as yup from 'yup';
 import { useFormik } from 'formik';
@@ -22,6 +22,8 @@ import textFields from './TextFields';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const validationSchema = yup.object({
     login: yup
       .string('Digite seu usuário')
@@ -43,9 +45,10 @@ const Login = () => {
         senha: values.password,
       })
         .then((response) => {
-          console.log(response.data.usuarioId.id);
           toast.success('Usuário logado com sucesso!');
           resetForm();
+          localStorage.setItem('id', response.data.usuarioId.id);
+          navigate('/admin', { replace: true });
         })
         .catch((error) => {
           console.log(`Error: ${error}`);

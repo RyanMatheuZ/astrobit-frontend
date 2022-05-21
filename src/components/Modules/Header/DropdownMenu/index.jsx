@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import {
   Box,
@@ -15,15 +15,22 @@ import {
 } from '@mui/material';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 import menuItems from '../MenuItems';
 
 const DropdownMenu = () => {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
+  const userId = localStorage.getItem('id');
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate('/', { replace: true });
+  };
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -78,25 +85,43 @@ const DropdownMenu = () => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem>
-          <ListItemIcon>
-            <Avatar fontSize="small" sx={{ color: 'primaryColor', bgcolor: 'white' }} />
-          </ListItemIcon>
-          Minha conta
-        </MenuItem>
-        <Divider />
-        {menuItems.map((menuItem) => (
-          <MenuItem key={menuItem.label}>
-            <ListItemIcon>
-              {menuItem.image}
-            </ListItemIcon>
-            <Link to={menuItem.path}>
-              <Typography sx={{ color: 'blackColor' }}>
-                {menuItem.label}
-              </Typography>
-            </Link>
-          </MenuItem>
-        ))}
+        {userId && (
+          <>
+            <MenuItem>
+              <ListItemIcon>
+                <Avatar fontSize="small" sx={{ color: 'primaryColor', bgcolor: 'white' }} />
+              </ListItemIcon>
+              <Link to="/admin">
+                Minha conta
+              </Link>
+            </MenuItem>
+            <Divider />
+            <MenuItem>
+              <ListItemIcon>
+                <ExitToAppIcon fontSize="small" sx={{ color: 'primaryColor', bgcolor: 'white' }} />
+              </ListItemIcon>
+              <Box onClick={() => handleLogout()}>
+                Sair
+              </Box>
+            </MenuItem>
+          </>
+        )}
+        {!userId && (
+          <>
+            {menuItems.map((menuItem) => (
+              <MenuItem key={menuItem.label}>
+                <ListItemIcon>
+                  {menuItem.image}
+                </ListItemIcon>
+                <Link to={menuItem.path}>
+                  <Typography sx={{ color: 'blackColor' }}>
+                    {menuItem.label}
+                  </Typography>
+                </Link>
+              </MenuItem>
+            ))}
+          </>
+        )}
       </Menu>
     </>
   );
