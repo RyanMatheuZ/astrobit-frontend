@@ -1,18 +1,15 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import * as yup from 'yup';
 import { useFormik } from 'formik';
-
 import axios from 'axios';
-
 import { ToastContainer, toast } from 'react-toastify';
 
 import {
   Box, Paper, TextField, Button, Typography, Select, FormControl, InputLabel, MenuItem,
 } from '@mui/material';
-
 import HelmetContainer from '../../components/HelmetContainer';
 import ContainerForm from '../../components/Layouts/ContainerForm';
 import Logo from '../../components/Elements/Logo';
@@ -22,6 +19,8 @@ import { textFields, investorProfile } from './TextFields';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,}$/;
 
   const validationSchema = yup.object({
@@ -46,6 +45,8 @@ const Register = () => {
       name: '',
       login: '',
       password: '',
+      passwordConfirm: '',
+      perfilinvestidor: '',
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
@@ -53,14 +54,18 @@ const Register = () => {
         nome: values.name,
         login: values.login,
         senha: values.password,
+        tipoperfil: values.perfilinvestidor,
       })
         .then((response) => {
-          console.log(response.data);
-          toast.success('Usuário cadastrado com sucesso!');
-          resetForm();
-        }).catch((error) => {
-          console.log(error);
-          toast.error('Usuário já existente!');
+          if (response.data.id !== 0) {
+            toast.success('Usuário cadastrado com sucesso');
+            resetForm();
+            localStorage.setItem('id', response.data.id);
+            navigate('/login', { replace: true });
+          }
+          if (response.data.id <= 0) {
+            toast.error('Usuario já existente');
+          }
         });
     },
   });
@@ -122,9 +127,11 @@ const Register = () => {
                 Perfil do investidor
               </InputLabel>
               <Select
+                name="perfilinvestidor"
                 label="Perfil do investidor"
-                value=""
-                onChange=""
+                error={formik.touched?.[Select.perfilinvestidor] && Boolean(formik.errors?.[Select.perfilinvestidor])}
+                helperText={formik.touched?.[Select.perfilinvestidor] && formik.errors?.[Select.perfilinvestidor]}
+                onChange={formik.handleChange}
               >
                 {investorProfile.map((profile) => (
                   <MenuItem value={profile}>

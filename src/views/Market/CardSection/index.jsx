@@ -7,6 +7,7 @@ import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 const CardSection = ({
   name, symbol, currentPrice, image, fiatCurrency,
 }) => {
+  const userId = localStorage.getItem('id');
   const favoriteCoin = () => alert(name);
 
   return (
@@ -31,14 +32,16 @@ const CardSection = ({
           style={{ borderRadius: '50%' }}
         />
 
-        <Button
-          onClick={() => favoriteCoin(name)}
-          sx={{
-            display: 'flex', alignItems: 'center', borderRadius: '5px', p: 1.5,
-          }}
-        >
-          <FavoriteRoundedIcon color="warning" fontSize="medium" />
-        </Button>
+        {userId && (
+          <Button
+            onClick={() => favoriteCoin(name)}
+            sx={{
+              display: 'flex', alignItems: 'center', borderRadius: '5px', p: 1.5,
+            }}
+          >
+            <FavoriteRoundedIcon fontSize="medium" sx={{ color: 'grayColor' }} />
+          </Button>
+        )}
       </Box>
 
       <Box>
