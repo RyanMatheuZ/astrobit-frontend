@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import {
   Box, Paper, TextField, Button, Typography, Select, FormControl, InputLabel, MenuItem,
@@ -45,7 +45,6 @@ const Register = () => {
       name: '',
       login: '',
       password: '',
-      passwordConfirm: '',
       perfilinvestidor: '',
     },
     validationSchema,
@@ -54,14 +53,14 @@ const Register = () => {
         nome: values.name,
         login: values.login,
         senha: values.password,
-        tipoperfil: values.perfilinvestidor,
+        tipoperfil: values.investorProfile,
       })
         .then((response) => {
           if (response.data.id !== 0) {
             toast.success('Usuário cadastrado com sucesso');
             resetForm();
             localStorage.setItem('id', response.data.id);
-            navigate('/login', { replace: true });
+            setTimeout(() => navigate('/login', { replace: true }), 2500);
           }
           if (response.data.id <= 0) {
             toast.error('Usuario já existente');
@@ -127,10 +126,10 @@ const Register = () => {
                 Perfil do investidor
               </InputLabel>
               <Select
-                name="perfilinvestidor"
+                name="investorProfile"
                 label="Perfil do investidor"
-                error={formik.touched?.[Select.perfilinvestidor] && Boolean(formik.errors?.[Select.perfilinvestidor])}
-                helperText={formik.touched?.[Select.perfilinvestidor] && formik.errors?.[Select.perfilinvestidor]}
+                error={formik.touched?.[Select.investorProfile] && Boolean(formik.errors?.[Select.investorProfile])}
+                helperText={formik.touched?.[Select.investorProfile] && formik.errors?.[Select.investorProfile]}
                 onChange={formik.handleChange}
               >
                 {investorProfile.map((profile) => (
@@ -163,7 +162,6 @@ const Register = () => {
           </Box>
         </Paper>
       </Box>
-      <ToastContainer />
     </ContainerForm>
   );
 };

@@ -7,7 +7,6 @@ import axios from 'axios';
 import StarIcon from '@mui/icons-material/Star';
 import PersonIcon from '@mui/icons-material/PersonRounded';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-
 import GreenSquare from '../../../components/Elements/GreenSquare';
 
 const Header = () => {
@@ -41,7 +40,6 @@ const Header = () => {
       }}
       >
         <img
-          src={`${process.env.PUBLIC_URL}/images/ryan.jpg`}
           alt={!userId ? '' : userData.nome}
           title={!userId ? '' : userData.nome}
           draggable="false"

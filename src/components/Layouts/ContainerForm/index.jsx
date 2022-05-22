@@ -8,8 +8,11 @@ import { Box, Tooltip, IconButton } from '@mui/material';
 
 import BackIcon from '@mui/icons-material/ArrowBackIosRounded';
 
+import { ToastContainer } from 'react-toastify';
+
 const ContainerForm = ({ children }) => (
   <>
+    <ToastContainer />
     <Box sx={{
       display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'flex-start' }, bgcolor: 'primaryColor', width: '100%', height: '200px', paddingInline: 10,
     }}

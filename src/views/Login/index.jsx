@@ -7,7 +7,7 @@ import { useFormik } from 'formik';
 
 import axios from 'axios';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import {
   Box, Paper, TextField, Button, Typography,
@@ -48,7 +48,7 @@ const Login = () => {
           toast.success('Usuário logado com sucesso!');
           resetForm();
           localStorage.setItem('id', response.data.usuarioId.id);
-          navigate('/admin', { replace: true });
+          setTimeout(() => navigate('/admin', { replace: true }), 2500);
         })
         .catch((error) => {
           console.log(`Error: ${error}`);
@@ -117,7 +117,6 @@ const Login = () => {
             >
               Entrar
             </Button>
-            <ToastContainer />
           </form>
           <Box sx={{ marginTop: 2 }}>
             <Typography>
