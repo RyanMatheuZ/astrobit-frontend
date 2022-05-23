@@ -21,16 +21,20 @@ import menuItems from '../MenuItems';
 
 const DropdownMenu = () => {
   const navigate = useNavigate();
+
+  const userId = localStorage.getItem('id');
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
-  const userId = localStorage.getItem('id');
   const handleLogout = () => {
     localStorage.clear();
     navigate('/', { replace: true });
   };
+
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>

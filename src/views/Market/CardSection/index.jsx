@@ -8,6 +8,7 @@ const CardSection = ({
   name, symbol, currentPrice, image, fiatCurrency,
 }) => {
   const userId = localStorage.getItem('id');
+
   const favoriteCoin = () => alert(name);
 
   return (

@@ -4,12 +4,15 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import * as yup from 'yup';
 import { useFormik } from 'formik';
+
 import axios from 'axios';
+
 import { toast } from 'react-toastify';
 
 import {
   Box, Paper, TextField, Button, Typography, Select, FormControl, InputLabel, MenuItem,
 } from '@mui/material';
+
 import HelmetContainer from '../../components/HelmetContainer';
 import ContainerForm from '../../components/Layouts/ContainerForm';
 import Logo from '../../components/Elements/Logo';
@@ -59,12 +62,15 @@ const Register = () => {
           if (response.data.id !== 0) {
             toast.success('Usuário cadastrado com sucesso');
             resetForm();
+
             localStorage.setItem('id', response.data.id);
+
             setTimeout(() => navigate('/login', { replace: true }), 2500);
+
+            return;
           }
-          if (response.data.id <= 0) {
-            toast.error('Usuario já existente');
-          }
+
+          toast.error('Usuario já existente');
         });
     },
   });

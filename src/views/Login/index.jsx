@@ -47,12 +47,14 @@ const Login = () => {
         .then((response) => {
           toast.success('Usuário logado com sucesso!');
           resetForm();
+
           localStorage.setItem('id', response.data.usuarioId.id);
+
           setTimeout(() => navigate('/admin', { replace: true }), 2500);
         })
         .catch((error) => {
           console.log(`Error: ${error}`);
-          toast.error('Usuário ou senha inválida');
+          toast.error('Usuário ou senha inválida!');
         });
     },
   });
