@@ -3,14 +3,25 @@ import PropTypes from 'prop-types';
 
 import { Box, Typography, Button } from '@mui/material';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { toast } from 'react-toastify';
+
+import axios from 'axios';
 
 const CardSection = ({
-  name, symbol, currentPrice, image, fiatCurrency,
+  id, name, symbol, currentPrice, image, fiatCurrency, disfavorCoinStatus,
 }) => {
   const userId = localStorage.getItem('id');
 
-  const favoriteCoin = () => alert(name);
-
+  const favoriteCoin = (idCoin) => {
+    axios.get(`https://localhost:5001/api/UsuarioMoeda/Favoritar/${userId}/${idCoin}`)
+      .then(() => toast.success('Moeda favoritada!'));
+  };
+  console.log(userId);
+  const disfavorCoin = (idCoin) => {
+    axios.delete(`https://localhost:5001/api/UsuarioMoeda/DeletarMoeda/${idCoin}/${userId}`)
+      .then(() => toast.success('Moeda removida com sucesso!')).catch((err) => console.log(err));
+  };
   return (
     <Box
       component="article"
@@ -33,14 +44,25 @@ const CardSection = ({
           style={{ borderRadius: '50%' }}
         />
 
-        {userId && (
+        {(userId && disfavorCoinStatus === false) && (
           <Button
-            onClick={() => favoriteCoin(name)}
+            onClick={() => favoriteCoin(id)}
             sx={{
               display: 'flex', alignItems: 'center', borderRadius: '5px', p: 1.5,
             }}
           >
             <FavoriteRoundedIcon fontSize="medium" sx={{ color: 'grayColor' }} />
+          </Button>
+        )}
+
+        {disfavorCoinStatus && (
+          <Button
+            onClick={() => disfavorCoin(id)}
+            sx={{
+              display: 'flex', alignItems: 'center', borderRadius: '5px', p: 1.5,
+            }}
+          >
+            <DeleteOutlineIcon fontSize="medium" sx={{ color: 'red' }} />
           </Button>
         )}
       </Box>
@@ -62,7 +84,6 @@ const CardSection = ({
           {symbol}
         </Typography>
       </Box>
-
       <Box>
         <Typography
           component="p"
@@ -84,11 +105,13 @@ const CardSection = ({
 };
 
 CardSection.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   symbol: PropTypes.string.isRequired,
   currentPrice: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   fiatCurrency: PropTypes.string.isRequired,
+  disfavorCoinStatus: PropTypes.bool.isRequired,
 };
 
 export default CardSection;

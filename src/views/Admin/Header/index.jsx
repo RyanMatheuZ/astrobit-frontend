@@ -9,18 +9,39 @@ import PersonIcon from '@mui/icons-material/PersonRounded';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import GreenSquare from '../../../components/Elements/GreenSquare';
 
+const formatDate = (userDate) => {
+  const date = new Date(userDate);
+
+  const getFormatDate = date.toLocaleDateString(
+    'pt-br',
+    {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    },
+  );
+
+  return getFormatDate;
+};
+
 const Header = () => {
   const userId = localStorage.getItem('id');
   const [userData, setUserData] = useState(userId);
+  const [userCoinQuantity, setUserCoinQuantity] = useState([]);
+
   useEffect(() => {
     axios.get(`https://localhost:5001/api/Usuario/${userId}`)
-      .then((response) => setUserData(response.data.usuario));
+      .then((response) => {
+        setUserData(response.data.usuario);
+        setUserCoinQuantity(response.data.listaMoeda);
+      });
   }, []);
+
   const userStatus = [
     {
       label: 'Data de entrada',
       image: <StarIcon sx={{ color: 'secondaryColor', width: '20px' }} />,
-      value: '10/05/2022',
+      value: !userId ? '' : formatDate(userData.dataCreated),
     },
     {
       label: 'Perfil do investidor',
@@ -30,9 +51,10 @@ const Header = () => {
     {
       label: 'Moedas favoritas',
       image: <FavoriteIcon sx={{ color: 'secondaryColor', width: '20px' }} />,
-      value: '3',
+      value: !userId ? '' : userCoinQuantity.length,
     },
   ];
+
   return (
     <Box sx={{ display: 'flex' }}>
       <Box sx={{
@@ -40,11 +62,12 @@ const Header = () => {
       }}
       >
         <img
+          src={`${process.env.PUBLIC_URL}/images/avatar.svg`}
           alt={!userId ? '' : userData.nome}
           title={!userId ? '' : userData.nome}
           draggable="false"
           style={{
-            borderRadius: 5, width: '120px', height: '150px', opacity: 0,
+            borderRadius: 5, width: '120px', height: '150px',
           }}
         />
       </Box>

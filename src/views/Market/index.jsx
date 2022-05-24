@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { ToastContainer } from 'react-toastify';
 import {
   Box, Typography, Pagination, FormControl, InputLabel, Select, MenuItem,
 } from '@mui/material';
@@ -78,6 +78,7 @@ const Market = () => {
 
   return (
     <LayoutDefaut>
+      <ToastContainer />
       <HelmetContainer
         title="Mercado"
         description="Explore aqui na Astrobit esse imenso e promissor mercado de criptomoedas!"
@@ -129,12 +130,14 @@ const Market = () => {
             <>
               {allCoins.map((allCoin) => (
                 <CardSection
-                  key={allCoin.name}
+                  key={allCoin.id}
+                  id={allCoin.id}
                   name={allCoin.name}
                   symbol={allCoin.symbol}
                   image={allCoin.image}
                   currentPrice={allCoin.current_price}
                   fiatCurrency={currentFiatCurrencySymbol}
+                  disfavorCoinStatus={false}
                 />
               ))}
 
