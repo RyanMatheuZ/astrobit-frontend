@@ -1,19 +1,21 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
 
-import Home from './views/Home'
-import reportWebVitals from './reportWebVitals'
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import './styles/global.css'
+import { ThemeProvider } from '@mui/material/styles';
+
+import WebSiteRoutes from './routes';
+
+import theme from './theme';
+
+import './styles/global.css';
 
 ReactDOM.render(
-	<React.StrictMode>
-		<Home />
-	</React.StrictMode>,
-	document.getElementById('root')
-)
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals()
+  <BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <WebSiteRoutes />
+    </ThemeProvider>
+  </BrowserRouter>,
+  document.getElementById('root'),
+);
