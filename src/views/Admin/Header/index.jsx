@@ -62,7 +62,7 @@ const Header = () => {
       }}
       >
         <img
-          src={`${process.env.PUBLIC_URL}/images/avatar.svg`}
+          src={`${process.env.PUBLIC_URL}/images/avatar-purple.svg`}
           alt={!userId ? '' : userData.nome}
           title={!userId ? '' : userData.nome}
           draggable="false"

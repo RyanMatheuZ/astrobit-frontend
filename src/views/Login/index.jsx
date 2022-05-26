@@ -50,7 +50,7 @@ const Login = () => {
 
           localStorage.setItem('id', response.data.usuarioId.id);
 
-          setTimeout(() => navigate('/admin', { replace: true }), 2500);
+          setTimeout(() => navigate('/admin', { replace: true }), 1500);
         })
         .catch((error) => {
           console.log(`Error: ${error}`);

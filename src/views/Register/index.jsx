@@ -65,7 +65,7 @@ const Register = () => {
 
             localStorage.setItem('id', response.data.id);
 
-            setTimeout(() => navigate('/login', { replace: true }), 2500);
+            setTimeout(() => navigate('/login', { replace: true }), 1500);
 
             return;
           }

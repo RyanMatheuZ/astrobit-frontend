@@ -1,27 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import axios from 'axios';
+
+import { toast } from 'react-toastify';
+
 import { Box, Typography, Button } from '@mui/material';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { toast } from 'react-toastify';
-
-import axios from 'axios';
 
 const CardSection = ({
   id, name, symbol, currentPrice, image, fiatCurrency, disfavorCoinStatus,
 }) => {
   const userId = localStorage.getItem('id');
 
+  const coinList = [];
+  const userCoins = [];
+
   const favoriteCoin = (idCoin) => {
-    axios.get(`https://localhost:5001/api/UsuarioMoeda/Favoritar/${userId}/${idCoin}`)
-      .then(() => toast.success('Moeda favoritada!'));
+    axios.get(`https://localhost:5001/api/Usuario/${userId}`)
+      .then((response) => {
+        coinList.push(response.data.listaMoeda);
+        coinList.map((item) => item.map((coins) => userCoins.push(coins.moedaId)));
+
+        if (userCoins.includes(idCoin)) {
+          toast.error('Moeda já favoritada!');
+          return;
+        }
+        axios.get(`https://localhost:5001/api/UsuarioMoeda/Favoritar/${userId}/${idCoin}`)
+          .then(() => toast.success('Moeda favoritada!'));
+      });
   };
-  console.log(userId);
+
   const disfavorCoin = (idCoin) => {
     axios.delete(`https://localhost:5001/api/UsuarioMoeda/DeletarMoeda/${idCoin}/${userId}`)
-      .then(() => toast.success('Moeda removida com sucesso!')).catch((err) => console.log(err));
+      .then(() => {
+        toast.success('Moeda removida com sucesso!');
+        window.location.reload();
+      });
   };
+
   return (
     <Box
       component="article"
@@ -66,7 +84,6 @@ const CardSection = ({
           </Button>
         )}
       </Box>
-
       <Box>
         <Typography
           component="h2"

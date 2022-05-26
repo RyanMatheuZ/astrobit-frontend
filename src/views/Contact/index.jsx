@@ -21,17 +21,17 @@ const Contact = () => {
   const validationSchema = yup.object({
     name: yup
       .string()
-      .required('O usuário é obrigatório'),
+      .required('O nome é obrigatório!'),
     email: yup
       .string()
       .email('Digite um e-mail válido')
-      .required('O e-mail é obrigatório'),
+      .required('O e-mail é obrigatório!'),
     phone: yup
-      .string('')
-      .required('O telefone é obrigatório'),
+      .string()
+      .required('O telefone é obrigatório!'),
     doubt: yup
       .string()
-      .required('Digite sua dúvida'),
+      .required('A dúvida é obrigatória!'),
   });
 
   const formik = useFormik({
@@ -114,6 +114,20 @@ const Contact = () => {
                   sx={{ width: '80%' }}
                 />
               ))}
+              <TextField
+                id="doubt"
+                label="Dúvida"
+                multiline
+                rows={4}
+                value={formik.values.doubt}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.doubt && Boolean(formik.errors.doubt)
+                }
+                helperText={formik.touched.doubt && formik.errors.doubt}
+                margin="dense"
+                sx={{ width: '80%' }}
+              />
               <Button
                 sx={{ marginTop: 1, width: '40%' }}
                 type="submit"

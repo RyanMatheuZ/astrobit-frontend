@@ -96,7 +96,9 @@ const DropdownMenu = () => {
                 <Avatar fontSize="small" sx={{ color: 'primaryColor', bgcolor: 'white' }} />
               </ListItemIcon>
               <Link to="/admin">
-                Minha conta
+                <Typography sx={{ color: 'blackColor' }}>
+                  Minha conta
+                </Typography>
               </Link>
             </MenuItem>
             <Divider />

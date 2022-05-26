@@ -5,11 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { Box } from '@mui/material';
-
+import { ToastContainer } from 'react-toastify';
 import HelmetContainer from '../../components/HelmetContainer';
 import LayoutDefault from '../../components/Layouts/LayoutDefault';
 import Container from '../../components/Layouts/Container';
-
 import Header from './Header';
 import FavoriteCoins from './FavoriteCoins';
 
@@ -44,6 +43,7 @@ const Admin = () => {
           <Header />
           <FavoriteCoins />
         </Box>
+        <ToastContainer />
       </Container>
     </LayoutDefault>
   );

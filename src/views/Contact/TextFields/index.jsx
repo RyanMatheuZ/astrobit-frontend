@@ -11,10 +11,6 @@ const textFields = [
     name: 'phone',
     label: 'Telefone',
   },
-  {
-    name: 'doubt',
-    label: 'Dúvida',
-  },
 ];
 
 export default textFields;
