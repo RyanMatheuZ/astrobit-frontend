@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
 import { Link } from 'react-router-dom';
-
 import {
   AppBar,
   Toolbar,
@@ -11,11 +9,10 @@ import {
   Menu,
   MenuItem,
 } from '@mui/material';
-
 import MenuIcon from '@mui/icons-material/Menu';
-import DropdownMenu from './DropdownMenu';
 import Logo from '../../Elements/Logo';
 import Container from '../../Layouts/Container';
+import DropdownMenu from './DropdownMenu';
 
 const pages = [
   { label: 'Início', path: '/' },
@@ -26,6 +23,7 @@ const pages = [
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
+
   const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
   const handleCloseNavMenu = () => setAnchorElNav(null);
 

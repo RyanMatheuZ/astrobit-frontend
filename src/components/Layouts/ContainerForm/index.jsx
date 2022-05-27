@@ -1,13 +1,7 @@
 import React from 'react';
-
 import { Link } from 'react-router-dom';
-
-import PropTypes from 'prop-types';
-
 import { Box, Tooltip, IconButton } from '@mui/material';
-
 import BackIcon from '@mui/icons-material/ArrowBackIosRounded';
-
 import { ToastContainer } from 'react-toastify';
 
 const ContainerForm = ({ children }) => (
@@ -39,9 +33,5 @@ const ContainerForm = ({ children }) => (
     </Box>
   </>
 );
-
-ContainerForm.propTypes = {
-  children: PropTypes.element.isRequired,
-};
 
 export default ContainerForm;

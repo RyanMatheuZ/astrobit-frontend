@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
-import { Box, Typography, Tooltip } from '@mui/material';
-
 import axios from 'axios';
-
+import { Box, Typography, Tooltip } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import PersonIcon from '@mui/icons-material/PersonRounded';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -26,6 +23,7 @@ const formatDate = (userDate) => {
 
 const Header = () => {
   const userId = localStorage.getItem('id');
+
   const [userData, setUserData] = useState(userId);
   const [userCoinQuantity, setUserCoinQuantity] = useState([]);
 
@@ -41,17 +39,17 @@ const Header = () => {
     {
       label: 'Data de entrada',
       image: <StarIcon sx={{ color: 'secondaryColor', width: '20px' }} />,
-      value: !userId ? '' : formatDate(userData.dataCreated),
+      value: !userId ? 'Carregando...' : formatDate(userData.dataCreated),
     },
     {
       label: 'Perfil do investidor',
       image: <PersonIcon sx={{ color: 'secondaryColor', width: '20px' }} />,
-      value: !userId ? '' : userData.tipoPerfil,
+      value: !userId ? 'Carregando...' : userData.tipoPerfil,
     },
     {
       label: 'Moedas favoritas',
       image: <FavoriteIcon sx={{ color: 'secondaryColor', width: '20px' }} />,
-      value: !userId ? '' : userCoinQuantity.length,
+      value: !userId ? 'Carregando...' : userCoinQuantity.length,
     },
   ];
 

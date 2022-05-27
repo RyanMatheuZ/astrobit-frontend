@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import axios from 'axios';
-
 import { Box, Typography, Divider } from '@mui/material';
-
 import CardSection from '../../Market/CardSection';
 
 const FavoriteCoins = () => {
+  const userId = localStorage.getItem('id');
+
   const coinList = [];
   const userCoins = [];
 
   const [userCoinsQuantity, setUserCoinsQuantity] = useState();
-
-  const userId = localStorage.getItem('id');
 
   const [dataIsInTheLoadingPhase, setDataIsInTheLoadingPhase] = useState(true);
 
@@ -106,4 +103,5 @@ const FavoriteCoins = () => {
     </Box>
   );
 };
+
 export default FavoriteCoins;

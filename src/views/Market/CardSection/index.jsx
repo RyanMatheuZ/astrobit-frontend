@@ -1,10 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import axios from 'axios';
-
 import { toast } from 'react-toastify';
-
 import { Box, Typography, Button } from '@mui/material';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
@@ -27,6 +23,7 @@ const CardSection = ({
           toast.error('Moeda já favoritada!');
           return;
         }
+
         axios.get(`https://localhost:5001/api/UsuarioMoeda/Favoritar/${userId}/${idCoin}`)
           .then(() => toast.success('Moeda favoritada!'));
       });
@@ -119,16 +116,6 @@ const CardSection = ({
       </Box>
     </Box>
   );
-};
-
-CardSection.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  symbol: PropTypes.string.isRequired,
-  currentPrice: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
-  fiatCurrency: PropTypes.string.isRequired,
-  disfavorCoinStatus: PropTypes.bool.isRequired,
 };
 
 export default CardSection;

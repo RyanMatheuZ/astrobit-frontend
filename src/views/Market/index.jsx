@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import {
-  Box, Typography, Pagination, FormControl, InputLabel, Select, MenuItem,
+  Box,
+  Typography,
+  Pagination,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from '@mui/material';
-
 import HelmetContainer from '../../components/HelmetContainer';
 import LayoutDefaut from '../../components/Layouts/LayoutDefault';
 import Container from '../../components/Layouts/Container';
-
 import Title from './Title';
 import CardSection from './CardSection';
 import CardLoading from './CardLoading';
-
 import getHttpRequest from '../../utils/getHttpRequest';
 
 const fiatCurrency = [
@@ -22,6 +25,8 @@ const fiatCurrency = [
 ];
 
 const Market = () => {
+  const url = `${process.env.REACT_APP_CRYPTO_API}/coins/markets`;
+
   const [dataIsInTheLoadingPhase, setDataIsInTheLoadingPhase] = useState(true);
 
   const [allCoins, setAllCoins] = useState([]);
@@ -58,8 +63,6 @@ const Market = () => {
     setPage(value);
     setCurrentPageNumber(value);
   };
-
-  const url = `${process.env.REACT_APP_CRYPTO_API}/coins/markets`;
 
   useEffect(() => {
     getHttpRequest(url, {

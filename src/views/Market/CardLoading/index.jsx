@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import { Box, Skeleton } from '@mui/material';
 
 const CardLoading = ({ amountOfCoinsPerPage, dataIsInTheLoadingPhase }) => (
@@ -40,10 +38,5 @@ const CardLoading = ({ amountOfCoinsPerPage, dataIsInTheLoadingPhase }) => (
     )}
   </Box>
 );
-
-CardLoading.propTypes = {
-  amountOfCoinsPerPage: PropTypes.number.isRequired,
-  dataIsInTheLoadingPhase: PropTypes.bool.isRequired,
-};
 
 export default CardLoading;

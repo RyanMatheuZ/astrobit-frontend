@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import { Box } from '@mui/material';
 
 const ContainerGlassmorphism = ({ children }) => (
@@ -21,9 +19,5 @@ const ContainerGlassmorphism = ({ children }) => (
     </Box>
   </Box>
 );
-
-ContainerGlassmorphism.propTypes = {
-  children: PropTypes.element.isRequired,
-};
 
 export default ContainerGlassmorphism;

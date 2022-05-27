@@ -1,10 +1,8 @@
 import React from 'react';
-
 import HelmetContainer from '../../components/HelmetContainer';
 import LayoutDefaut from '../../components/Layouts/LayoutDefault';
 import Container from '../../components/Layouts/Container';
 import ContainerGlassmorphism from '../../components/Layouts/ContainerGlassmorphism';
-
 import InitalSection from './InitialSection';
 import InfoSection from './InfoSection';
 import PlatformSection from './PlarformSection';

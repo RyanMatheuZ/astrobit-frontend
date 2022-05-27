@@ -1,5 +1,4 @@
 import React from 'react';
-
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import EmailIcon from '@mui/icons-material/Email';
 import LanguageIcon from '@mui/icons-material/Language';

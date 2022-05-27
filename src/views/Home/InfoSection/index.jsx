@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import { Grid, Box, Typography } from '@mui/material';
 
 const Info = ({ icon, text }) => (
@@ -38,10 +36,5 @@ const InfoSection = () => (
     </Grid>
   </Grid>
 );
-
-Info.propTypes = {
-  icon: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-};
 
 export default InfoSection;
