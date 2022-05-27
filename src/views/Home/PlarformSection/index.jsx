@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import { Grid, Box, Typography } from '@mui/material';
 
 const PlatformImage = () => (
@@ -77,19 +75,13 @@ const PlatformText = () => (
 
 const PlatformSection = () => (
   <Grid
-    component="section"
     container
+    component="section"
     sx={{ display: 'flex', justifyContent: 'space-around', my: 4 }}
   >
     <PlatformImage />
     <PlatformText />
   </Grid>
 );
-
-ExchangeInfo.propTypes = {
-  icon: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-};
 
 export default PlatformSection;

@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import Helmet from 'react-helmet';
 
 const HelmetContainer = ({ title, description }) => (
@@ -16,10 +14,5 @@ const HelmetContainer = ({ title, description }) => (
     <meta name="description" content={description} />
   </Helmet>
 );
-
-HelmetContainer.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-};
 
 export default HelmetContainer;

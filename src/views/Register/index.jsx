@@ -1,24 +1,24 @@
 import React from 'react';
-
 import { Link, useNavigate } from 'react-router-dom';
-
 import * as yup from 'yup';
 import { useFormik } from 'formik';
-
 import axios from 'axios';
-
 import { toast } from 'react-toastify';
-
 import {
-  Box, Paper, TextField, Button, Typography, Select, FormControl, InputLabel, MenuItem,
+  Box,
+  Paper,
+  TextField,
+  Button,
+  Typography,
+  Select,
+  FormControl,
+  InputLabel,
+  MenuItem,
 } from '@mui/material';
-
 import HelmetContainer from '../../components/HelmetContainer';
 import ContainerForm from '../../components/Layouts/ContainerForm';
 import Logo from '../../components/Elements/Logo';
-
 import { textFields, investorProfile } from './TextFields';
-
 import 'react-toastify/dist/ReactToastify.min.css';
 
 const Register = () => {

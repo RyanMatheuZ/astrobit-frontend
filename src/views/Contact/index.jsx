@@ -2,17 +2,17 @@ import React from 'react';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { ToastContainer, toast } from 'react-toastify';
-
 import {
-  TextField, Button, Typography, Grid, Box,
+  TextField,
+  Button,
+  Typography,
+  Grid,
+  Box,
 } from '@mui/material';
-
 import WhiteLogo from '../../components/Elements/WhiteLogo';
-
 import HelmetContainer from '../../components/HelmetContainer';
 import LayoutDefault from '../../components/Layouts/LayoutDefault';
 import Container from '../../components/Layouts/Container';
-
 import contacts from './Contacts';
 import logos from './Logos';
 import textFields from './TextFields';

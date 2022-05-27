@@ -1,8 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import { Grid, Box, Typography } from '@mui/material';
-
 import GreenSquare from '../../../components/Elements/GreenSquare';
 
 const ParagraphText = ({ text }) => (
@@ -91,16 +88,12 @@ const InitialImage = () => (
 
 const InitialSection = () => (
   <Grid
-    component="section"
     container
+    component="section"
   >
     <InitialText />
     <InitialImage />
   </Grid>
 );
-
-ParagraphText.propTypes = {
-  text: PropTypes.string.isRequired,
-};
 
 export default InitialSection;

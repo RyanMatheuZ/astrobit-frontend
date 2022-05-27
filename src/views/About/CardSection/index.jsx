@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import { Grid, Box, Typography } from '@mui/material';
 
 const Card = ({ header, text, image }) => (
@@ -42,11 +40,5 @@ const CardSection = () => (
     </Grid>
   </Grid>
 );
-
-Card.propTypes = {
-  header: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-};
 
 export default CardSection;

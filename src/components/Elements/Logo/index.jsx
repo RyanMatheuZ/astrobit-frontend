@@ -1,8 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import { Link } from 'react-router-dom';
-
 import { Box } from '@mui/material';
 
 const Logo = ({ flexGrowValue }) => {
@@ -24,10 +21,6 @@ const Logo = ({ flexGrowValue }) => {
       </Link>
     </Box>
   );
-};
-
-Logo.propTypes = {
-  flexGrowValue: PropTypes.number.isRequired,
 };
 
 export default Logo;

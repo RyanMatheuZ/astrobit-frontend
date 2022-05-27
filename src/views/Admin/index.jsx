@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
 import { useNavigate } from 'react-router-dom';
-
 import axios from 'axios';
-
 import { Box } from '@mui/material';
 import { ToastContainer } from 'react-toastify';
 import HelmetContainer from '../../components/HelmetContainer';
@@ -13,9 +10,9 @@ import Header from './Header';
 import FavoriteCoins from './FavoriteCoins';
 
 const Admin = () => {
-  const navigate = useNavigate();
-
   const userId = localStorage.getItem('id');
+
+  const navigate = useNavigate();
 
   const [userData, setUserData] = useState(userId);
 
@@ -32,7 +29,7 @@ const Admin = () => {
   return (
     <LayoutDefault>
       <HelmetContainer
-        title={userId ? String(userData.nome) : ''}
+        title={userId ? String(userData.nome) : 'Carregando...'}
         description="Aqui é o seu espaço. Esteja por dentro de suas escolhas!"
       />
       <Container>

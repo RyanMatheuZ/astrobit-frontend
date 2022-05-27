@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { Typography } from '@mui/material';
-
 import GreenSquare from '../../../components/Elements/GreenSquare';
 
 const Title = () => (
