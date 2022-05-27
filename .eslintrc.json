@@ -19,7 +19,7 @@
     ],
     "rules": {
       "linebreak-style": 0,
-      "react/prop-types": [{ "ignore": true }],
+      "react/prop-types": 0,
       "react/function-component-definition": [2, { "namedComponents": "arrow-function" }],
       "react/jsx-one-expression-per-line": [2, { "allow": "none" }],
       "max-len": "off"
