@@ -8,7 +8,10 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  OutlinedInput,
+  InputAdornment,
 } from '@mui/material';
+import SearchIcon from '@mui/icons-material/SearchRounded';
 import HelmetContainer from '../../components/HelmetContainer';
 import LayoutDefaut from '../../components/Layouts/LayoutDefault';
 import Container from '../../components/Layouts/Container';
@@ -26,11 +29,13 @@ const fiatCurrency = [
 
 const Market = () => {
   const url = `${process.env.REACT_APP_CRYPTO_API}/coins/markets`;
+  const searchUrl = `${process.env.REACT_APP_CRYPTO_API}/coins/`;
 
   const [dataIsInTheLoadingPhase, setDataIsInTheLoadingPhase] = useState(true);
 
   const [allCoins, setAllCoins] = useState([]);
   const [page, setPage] = useState(1);
+  const [searchIds, setSearchIds] = useState('');
   const [currentFiatCurrencyLabel, setCurrentFiatCurrencyLabel] = useState('usd');
   const [currentFiatCurrencySymbol, setCurrentFiatCurrencySymbol] = useState('$');
   const [currentPageNumber, setCurrentPageNumber] = useState(0);
@@ -66,6 +71,7 @@ const Market = () => {
 
   useEffect(() => {
     getHttpRequest(url, {
+      ids: searchIds,
       vs_currency: currentFiatCurrencyLabel,
       order,
       per_page: amountOfCoinsPerPage,
@@ -77,7 +83,7 @@ const Market = () => {
         setDataIsInTheLoadingPhase(false);
       })
       .catch((error) => console.error(error));
-  }, [url, currentFiatCurrencyLabel, order, amountOfCoinsPerPage, currentPageNumber, sparkline]);
+  }, [url, searchIds, currentFiatCurrencyLabel, order, amountOfCoinsPerPage, currentPageNumber, sparkline]);
 
   return (
     <LayoutDefaut>
@@ -89,7 +95,7 @@ const Market = () => {
       <Container>
         <Title />
         <Box sx={{
-          display: 'flex', justifyContent: 'flex-end', paddingInline: 5, marginBottom: 3,
+          display: 'flex', justifyContent: 'space-between', paddingInline: 5, marginBottom: 3, alignItems: 'center',
         }}
         >
           <FormControl sx={{ maxWidth: '150px', width: '100%' }}>
@@ -120,6 +126,21 @@ const Market = () => {
                 </MenuItem>
               ))}
             </Select>
+          </FormControl>
+          <FormControl>
+            <InputLabel htmlFor="outlined-adornment-amount">
+              Pesquisar moedas
+            </InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-amount"
+              onChange={(e) => setSearchIds(e.target.value)}
+              endAdornment={(
+                <InputAdornment position="end">
+                  <SearchIcon sx={{ color: 'primaryColor' }} />
+                </InputAdornment>
+              )}
+              label="Pesquisar moedas."
+            />
           </FormControl>
         </Box>
 
