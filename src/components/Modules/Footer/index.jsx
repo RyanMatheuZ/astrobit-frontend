@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Box, Grid } from '@mui/material';
 import Logo from '../../Elements/Logo';
 import Container from '../../Layouts/Container';
